@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-21T20:09:47+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Dalaran’s Blog</title><subtitle>개발관련 글을 기록하는 곳입니다.</subtitle><author><name>Dalaran</name><email>minjiwr123@gmail.com</email></author><entry><title type="html">테스트 포스팅</title><link href="http://localhost:4000/first/" rel="alternate" type="text/html" title="테스트 포스팅" /><published>2022-04-12T00:00:00+09:00</published><updated>2022-04-12T00:00:00+09:00</updated><id>http://localhost:4000/first</id><content type="html" xml:base="http://localhost:4000/first/"><![CDATA[<h1 id="첫-테스트-포스팅">첫 테스트 포스팅</h1>
+
+<p>즐겁게 꾸며보자구</p>
+
+<p><img src="../images/2022-04-12-first/뮤데.jpeg" alt="뮤데" /></p>
+
+<p>동일 경로 테스트
+<img src="/assets/images/%EB%AE%A4%EB%8D%B0.jpeg" alt="뮤데" /></p>
+
+<p>프리티어 테스트</p>
+
+<p>걍 vscode로 하자 미리보기만 어케하면 됨</p>
+
+<p>vs로해도 실시간으로 보이면 개꿀
+새로고침 해야 보이네 ㅎㅎ</p>
+
+<p>두번 띄어야 줄바꿈</p>
+
+<p>아직 기본셋팅이 안끝났다.</p>]]></content><author><name>Dalaran</name><email>minjiwr123@gmail.com</email></author><summary type="html"><![CDATA[첫 테스트 포스팅]]></summary></entry></feed>
