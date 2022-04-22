@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-21T20:09:47+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Dalaran’s Blog</title><subtitle>개발관련 글을 기록하는 곳입니다.</subtitle><author><name>Dalaran</name><email>minjiwr123@gmail.com</email></author><entry><title type="html">테스트 포스팅</title><link href="http://localhost:4000/first/" rel="alternate" type="text/html" title="테스트 포스팅" /><published>2022-04-12T00:00:00+09:00</published><updated>2022-04-12T00:00:00+09:00</updated><id>http://localhost:4000/first</id><content type="html" xml:base="http://localhost:4000/first/"><![CDATA[<h1 id="첫-테스트-포스팅">첫 테스트 포스팅</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-22T23:01:21+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Dalaran’s Blog</title><subtitle>개발관련 글을 기록하는 곳입니다.</subtitle><author><name>Dalaran</name></author><entry><title type="html">테스트 포스팅</title><link href="http://localhost:4000/coding/first/" rel="alternate" type="text/html" title="테스트 포스팅" /><published>2022-04-12T00:00:00+09:00</published><updated>2022-04-12T00:00:00+09:00</updated><id>http://localhost:4000/coding/first</id><content type="html" xml:base="http://localhost:4000/coding/first/"><![CDATA[<h1 id="첫-테스트-포스팅">첫 테스트 포스팅</h1>
 
 <p>즐겁게 꾸며보자구</p>
 
@@ -16,4 +16,13 @@
 
 <p>두번 띄어야 줄바꿈</p>
 
-<p>아직 기본셋팅이 안끝났다.</p>]]></content><author><name>Dalaran</name><email>minjiwr123@gmail.com</email></author><summary type="html"><![CDATA[첫 테스트 포스팅]]></summary></entry></feed>
+<p>아직 기본셋팅이 안끝났다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 코드 테스트</span>
+<span class="k">export</span> <span class="nx">defalut</span> <span class="kd">function</span> <span class="nx">Test</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">test</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="nx">test</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre></div></div>]]></content><author><name>Dalaran</name></author><category term="coding" /><category term="blog" /><category term="jekyll" /><summary type="html"><![CDATA[첫 테스트 포스팅]]></summary></entry></feed>
