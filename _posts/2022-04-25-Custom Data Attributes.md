@@ -25,7 +25,7 @@ defaults:
 
 element에 "data-"로 시작하는 속성을 주게 되면 해당 속성 안에 원하는 값을 저장할 수 있다.
 
-``` javascript
+``` html
 <div class="example" data-theme="dark">
     custom data attributes
 </div>
@@ -45,7 +45,7 @@ ex) dataset.hellowWorld
 # 적용 코드
 먼저 js에서 $target (html의 <div id="App">)을 잡은 후 theme라는 변수에 matchMedia를 통해 "dark" 혹은 "light"를 할당한 후 이를 setAttribute를 통해 $target에 속성값을 주었다.
 
-```html
+```javascript
 // App.js
 class App {
   state = {
