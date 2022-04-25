@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-25T22:39:23+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Dalaran’s Blog</title><subtitle>개발관련 글을 기록하는 곳입니다.</subtitle><author><name>Dalaran</name></author><entry><title type="html">Custom data attributes</title><link href="http://localhost:4000/Custom-Data-Attributes/" rel="alternate" type="text/html" title="Custom data attributes" /><published>2022-04-25T00:00:00+09:00</published><updated>2022-04-25T00:00:00+09:00</updated><id>http://localhost:4000/Custom%20Data%20Attributes</id><content type="html" xml:base="http://localhost:4000/Custom-Data-Attributes/"><![CDATA[<p>  최근 프로그래머스 과제 테스트에서 고양이 사진 검색 사이트 과제구현을 해보았다. 해당 과제의 내용중에는 다크모드 구현이 있는데 이 때 알게 된 것이 Custom Data Attributes(data-*)이다. 나는 이 기능을 이용하여 data-theme 이라는 속성을 생성하였으며 이를 감지하여 css가 변경되는 코드를 만들어 과제를 해결하였다.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-25T23:13:40+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Dalaran’s Blog</title><subtitle>개발관련 글을 기록하는 곳입니다.</subtitle><author><name>Dalaran</name></author><entry><title type="html">Custom Data Attributes</title><link href="http://localhost:4000/css/Custom-Data-Attributes/" rel="alternate" type="text/html" title="Custom Data Attributes" /><published>2022-04-25T00:00:00+09:00</published><updated>2022-04-25T00:00:00+09:00</updated><id>http://localhost:4000/css/Custom%20Data%20Attributes</id><content type="html" xml:base="http://localhost:4000/css/Custom-Data-Attributes/"><![CDATA[<p>  최근 프로그래머스 과제 테스트에서 고양이 사진 검색 사이트 과제구현을 해보았다. 해당 과제의 내용중에는 다크모드 구현이 있는데 이 때 알게 된 것이 Custom Data Attributes(data-*)이다. 나는 이 기능을 이용하여 data-theme 이라는 속성을 생성하였으며 이를 감지하여 css가 변경되는 코드를 만들어 과제를 해결하였다.</p>
 
 <h1 id="data-">data-*</h1>
 
@@ -9,15 +9,15 @@
 
 <p>element에 “data-“로 시작하는 속성을 주게 되면 해당 속성 안에 원하는 값을 저장할 수 있다.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">div</span> <span class="kd">class</span><span class="o">=</span><span class="dl">"</span><span class="s2">example</span><span class="dl">"</span> <span class="nx">data</span><span class="o">-</span><span class="nx">theme</span><span class="o">=</span><span class="dl">"</span><span class="s2">dark</span><span class="dl">"</span><span class="o">&gt;</span>
-    <span class="nx">custom</span> <span class="nx">data</span> <span class="nx">attributes</span>
-<span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
-</span><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"example"</span> <span class="na">data-theme=</span><span class="s">"dark"</span><span class="nt">&gt;</span>
+    custom data attributes
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;script&gt;</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
         <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">.example</span><span class="dl">"</span><span class="p">).</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">theme</span><span class="p">)</span>
     <span class="c1">// dark</span>
-<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
-</span></code></pre></div></div>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
 
 <p>위와 같이 ‘data-theme’라는 커스텀 속성에 “dark”라는 값을 할당할 수 있는 것이다.
 이처럼 커스텀 속성을 부여해 두면 dataset 프로퍼티를 이용하여 해당 속성에 접근할 수 있다.</p>
@@ -104,7 +104,7 @@ ex) dataset.hellowWorld</p>
 
 <p>이상으로 결과화면과 함께 포스팅을 마치겠다.</p>
 
-<p><img src="/assets//images/2022-04-25/%EB%8B%A4%ED%81%AC%EB%AA%A8%EB%93%9C.gif" alt="" /></p>]]></content><author><name>Dalaran</name></author><summary type="html"><![CDATA[  최근 프로그래머스 과제 테스트에서 고양이 사진 검색 사이트 과제구현을 해보았다. 해당 과제의 내용중에는 다크모드 구현이 있는데 이 때 알게 된 것이 Custom Data Attributes(data-*)이다. 나는 이 기능을 이용하여 data-theme 이라는 속성을 생성하였으며 이를 감지하여 css가 변경되는 코드를 만들어 과제를 해결하였다.]]></summary></entry><entry><title type="html">테스트 포스팅</title><link href="http://localhost:4000/coding/first/" rel="alternate" type="text/html" title="테스트 포스팅" /><published>2022-04-12T00:00:00+09:00</published><updated>2022-04-12T00:00:00+09:00</updated><id>http://localhost:4000/coding/first</id><content type="html" xml:base="http://localhost:4000/coding/first/"><![CDATA[<h1 id="첫-테스트-포스팅">첫 테스트 포스팅</h1>
+<p><img src="/assets//images/2022-04-25/%EB%8B%A4%ED%81%AC%EB%AA%A8%EB%93%9C.gif" alt="" /></p>]]></content><author><name>Dalaran</name></author><category term="css" /><category term="data-*" /><category term="css" /><summary type="html"><![CDATA[  최근 프로그래머스 과제 테스트에서 고양이 사진 검색 사이트 과제구현을 해보았다. 해당 과제의 내용중에는 다크모드 구현이 있는데 이 때 알게 된 것이 Custom Data Attributes(data-*)이다. 나는 이 기능을 이용하여 data-theme 이라는 속성을 생성하였으며 이를 감지하여 css가 변경되는 코드를 만들어 과제를 해결하였다.]]></summary></entry><entry><title type="html">테스트 포스팅</title><link href="http://localhost:4000/coding/first/" rel="alternate" type="text/html" title="테스트 포스팅" /><published>2022-04-12T00:00:00+09:00</published><updated>2022-04-12T00:00:00+09:00</updated><id>http://localhost:4000/coding/first</id><content type="html" xml:base="http://localhost:4000/coding/first/"><![CDATA[<h1 id="첫-테스트-포스팅">첫 테스트 포스팅</h1>
 
 <p>즐겁게 꾸며보자구</p>
 
