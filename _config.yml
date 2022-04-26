@@ -16,9 +16,9 @@ minimal_mistakes_skin    : "dark" # "air", "aqua", "contrast", "dark", "dirt", "
 
 # Site Settings
 locale                   : "ko-KR"
-title                    : "Dalaran's Blog"
+title                    : "Log Archive"
 title_separator          : "|"
-subtitle                 : "나만의 쉼터"
+subtitle                 : "Dalaran's Blog"
 name                     : "Dalaran"
 description              : "개발관련 글을 기록하는 곳입니다."
 url                      : "https://dalaranl.github.io"
@@ -104,7 +104,7 @@ analytics:
 author:
   name             : "Dalaran"
   avatar           : "/assets/images/profile.jpeg"
-  bio              : "꾸준함의 미학."
+  bio              : "꾸준함의 미학"
   location         : "South Korea"
   # email            : "minjiwr123@gmail.com"
   links:

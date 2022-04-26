@@ -1,4 +1,4 @@
-I"y
+I"�
 
 <div class="masthead">
   <div class="masthead__inner-wrap">
@@ -6,10 +6,12 @@
       <nav id="site-nav" class="greedy-nav">
         
         <a class="site-title" href="/">
-          Dalaran's Blog
-          <span class="site-subtitle">나만의 쉼터</span>
+          Log Archive
+          <span class="site-subtitle">Dalaran's Blog</span>
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/year-archive/">Year-Archive</a>
+            </li><li class="masthead__menu-item">
               <a href="/categories/">Category</a>
             </li><li class="masthead__menu-item">
               <a href="/tags/">Tag</a>

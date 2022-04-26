@@ -1,5 +1,7 @@
 # main links
 main:
+  - title: "Year-Archive"
+    url: /year-archive/
   - title: "Category"
     url: /categories/
   - title: "Tag"
