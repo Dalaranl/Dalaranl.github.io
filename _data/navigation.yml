@@ -8,18 +8,18 @@ main:
     url: /search/
 
 docs:
-  - title: "다른글"
+  - title: "Vanilla"
     children:
-      - title: "Category"
-        url: /categories/
-      - title: "Tag"
+      - title: "HTML"
+        url: /categories/html/
+        category: "html"
+      - title: "JavaScript"
+        url: /categories/javascript/
+        category: "javascript"
+      - title: "css"
+        url: /categories/css/
+        category: "css"
+  - title: "Algorithm"
+    children:
+      - title: "algorithm"
         url: /tags/
-    
-  # - title: "About"
-  #   url: https://mmistakes.github.io/minimal-mistakes/about/
-  # - title: "Sample Posts"
-  #   url: /year-archive/
-  # - title: "Sample Collections"
-  #   url: /collection-archive/
-  # - title: "Sitemap"
-  #   url: /sitemap/

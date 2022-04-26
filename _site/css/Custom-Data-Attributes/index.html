@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Custom Data Attributes | Dalaran’s Blog</title>
-<meta name="description" content="  최근 프로그래머스 과제 테스트에서 고양이 사진 검색 사이트 과제구현을 해보았다. 해당 과제의 내용중에는 다크모드 구현이 있는데 이 때 알게 된 것이 Custom Data Attributes(data-*)이다. 나는 이 기능을 이용하여 data-theme 이라는 속성을 생성하였으며 이를 감지하여 css가 변경되는 코드를 만들어 과제를 해결하였다.">
+<meta name="description" content="Custom Data Attributes에대해 알아보고 이를 이용한 간단한 다크모드를 구현해보자.">
 
 
   <meta name="author" content="Dalaran">
@@ -26,9 +26,11 @@
 <meta property="og:url" content="http://localhost:4000/css/Custom-Data-Attributes/">
 
 
-  <meta property="og:description" content="  최근 프로그래머스 과제 테스트에서 고양이 사진 검색 사이트 과제구현을 해보았다. 해당 과제의 내용중에는 다크모드 구현이 있는데 이 때 알게 된 것이 Custom Data Attributes(data-*)이다. 나는 이 기능을 이용하여 data-theme 이라는 속성을 생성하였으며 이를 감지하여 css가 변경되는 코드를 만들어 과제를 해결하였다.">
+  <meta property="og:description" content="Custom Data Attributes에대해 알아보고 이를 이용한 간단한 다크모드를 구현해보자.">
 
 
+
+  <meta property="og:image" content="http://localhost:4000/assets//images/2022-04-25/%EB%8B%A4%ED%81%AC%EB%AA%A8%EB%93%9C.gif">
 
 
 
@@ -91,7 +93,12 @@
 
 
     <!-- start custom head snippets -->
-
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
 <!-- insert favicons. use https://realfavicongenerator.net/ -->
 
 <!-- end custom head snippets -->
@@ -191,6 +198,12 @@
 
 <div itemscope itemtype="https://schema.org/Person" class="h-card">
 
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/973713.jpg" alt="Dalaran" itemprop="image" class="u-photo">
+      </a>
+    </div>
   
 
   <div class="author__content">
@@ -308,17 +321,45 @@
   <label for="ac-toc">토글 메뉴</label>
   <ul class="nav__items">
     
+    
+      <li>
+        📂 <span style="font-family:'Cafe24Oneprettynight';">전체 글 수</style> <span style="font-family:'Coming Soon';">1</style> <span style="font-family:'Cafe24Oneprettynight';">개</style> 
+      </li>
       <li>
         
-          <span class="nav__sub-title">다른글</span>
+          <span class="nav__sub-title">Vanilla</span>
         
 
         
         <ul>
           
-            <li><a href="/categories/">Category</a></li>
           
-            <li><a href="/tags/">Tag</a></li>
+            <li><a href="/categories/html/">HTML ()</a></li>
+          
+          
+            <li><a href="/categories/javascript/">JavaScript ()</a></li>
+          
+          
+            <li><a href="/categories/css/">css (1)</a></li>
+          
+        </ul>
+        
+      </li>
+    
+    
+      <li>
+        📂 <span style="font-family:'Cafe24Oneprettynight';">전체 글 수</style> <span style="font-family:'Coming Soon';">1</style> <span style="font-family:'Cafe24Oneprettynight';">개</style> 
+      </li>
+      <li>
+        
+          <span class="nav__sub-title">Algorithm</span>
+        
+
+        
+        <ul>
+          
+          
+            <li><a href="/tags/">algorithm ()</a></li>
           
         </ul>
         
@@ -335,7 +376,7 @@
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Custom Data Attributes">
-    <meta itemprop="description" content="  최근 프로그래머스 과제 테스트에서 고양이 사진 검색 사이트 과제구현을 해보았다. 해당 과제의 내용중에는 다크모드 구현이 있는데 이 때 알게 된 것이 Custom Data Attributes(data-*)이다. 나는 이 기능을 이용하여 data-theme 이라는 속성을 생성하였으며 이를 감지하여 css가 변경되는 코드를 만들어 과제를 해결하였다.">
+    <meta itemprop="description" content="Custom Data Attributes에대해 알아보고 이를 이용한 간단한 다크모드를 구현해보자.">
     <meta itemprop="datePublished" content="2022-04-25T00:00:00+09:00">
     
 
@@ -367,7 +408,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          1 분 소요
+          2 분 소요
         
       </span>
     
@@ -379,9 +420,9 @@
 
       <section class="page__content e-content" itemprop="text">
         
-          <aside class="sidebar__right ">
+          <aside class="sidebar__right sticky">
             <nav class="toc">
-              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Contents</h4></header>
               <ul class="toc__menu"><li><a href="#data-">data-*</a></li><li><a href="#적용-코드">적용 코드</a></li></ul>
 
             </nav>
@@ -398,7 +439,15 @@
 
 <p>element에 “data-“로 시작하는 속성을 주게 되면 해당 속성 안에 원하는 값을 저장할 수 있다.</p>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"example"</span> <span class="na">data-theme=</span><span class="s">"dark"</span><span class="nt">&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"example"</span> <span class="na">data-theme=</span><span class="s">"dark"</span><span class="nt">&gt;</span>
     custom data attributes
 <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;script&gt;</span>
@@ -406,7 +455,7 @@
         <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">.example</span><span class="dl">"</span><span class="p">).</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">theme</span><span class="p">)</span>
     <span class="c1">// dark</span>
 <span class="nt">&lt;/script&gt;</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>위와 같이 ‘data-theme’라는 커스텀 속성에 “dark”라는 값을 할당할 수 있는 것이다.
 이처럼 커스텀 속성을 부여해 두면 dataset 프로퍼티를 이용하여 해당 속성에 접근할 수 있다.</p>
@@ -417,7 +466,62 @@ ex) dataset.hellowWorld</p>
 <h1 id="적용-코드">적용 코드</h1>
 <p>먼저 js에서 $target (html의 &lt;div id="App"&gt;)을 잡은 후 theme라는 변수에 matchMedia를 통해 “dark” 혹은 “light”를 할당한 후 이를 setAttribute를 통해 $target에 속성값을 주었다.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// App.js</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+</pre></td><td class="rouge-code"><pre><span class="c1">// App.js</span>
 <span class="kd">class</span> <span class="nx">App</span> <span class="p">{</span>
   <span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
     <span class="p">...</span>
@@ -472,11 +576,22 @@ ex) dataset.hellowWorld</p>
     <span class="k">this</span><span class="p">.</span><span class="nx">$target</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">data-theme</span><span class="dl">"</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">theme</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>버튼을 누르면 App에서 theme 값을 바꿔주며 setAttribute로 바뀐 값을 적용시켜 주고 있다.</p>
 
-<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">:root</span> <span class="p">{</span>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="nd">:root</span> <span class="p">{</span>
   <span class="py">--font-color</span><span class="p">:</span> <span class="m">#000</span><span class="p">;</span>
   <span class="py">--bg-color</span><span class="p">:</span> <span class="m">#fff</span><span class="p">;</span>
   <span class="py">--border-color</span><span class="p">:</span> <span class="m">#000</span><span class="p">;</span>
@@ -487,7 +602,7 @@ ex) dataset.hellowWorld</p>
   <span class="py">--bg-color</span><span class="p">:</span> <span class="m">#000</span><span class="p">;</span>
   <span class="py">--border-color</span><span class="p">:</span> <span class="m">#fff</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>이처럼 data-theme의 속성값을 변경해주면 css에서 이를 감지해 root에 선언된 변수값을 변하게 하였다. 테마에 따라 변경해줄 css에 해당 변수값을 적용시키면 간단한 다크모드를 만들 수 있다.</p>
 
@@ -555,16 +670,6 @@ ex) dataset.hellowWorld</p>
 
 
       
-  <nav class="pagination">
-    
-      <a href="/coding/first/" class="pagination--pager" title="테스트 포스팅
-">이전</a>
-    
-    
-      <a href="#" class="pagination--pager disabled">다음</a>
-    
-  </nav>
-
     </div>
 
     
@@ -577,55 +682,9 @@ ex) dataset.hellowWorld</p>
       <div class="grid__wrapper">
         
           
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/coding/first/" rel="permalink">테스트 포스팅
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2022-04-12T00:00:00+09:00">2022-04-12</time>
-      </span>
-    
-
-    <span class="page__meta-sep"></span>
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
-        
-          최대 1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">첫 테스트 포스팅
-</p>
-  </article>
-</div>
-
-        
+            
       </div>
     </div>
-  
   
 </div>
     </div>
@@ -681,21 +740,27 @@ ex) dataset.hellowWorld</p>
 
 
 
-    
-  <script>
-    var disqus_config = function () {
-      this.page.url = "http://localhost:4000/css/Custom-Data-Attributes/";  /* Replace PAGE_URL with your page's canonical URL variable */
-      this.page.identifier = "/css/Custom Data Attributes"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
-    };
-    (function() { /* DON'T EDIT BELOW THIS LINE */
-      var d = document, s = d.createElement('script');
-      s.src = 'https://dalaran.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-    })();
-  </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <script>
+  'use strict';
 
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'Dalaranl/dalaranl.github.io');
+    script.setAttribute('issue-term', 'pathname');
+    
+    script.setAttribute('theme', 'photon-dark');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
 
   
 

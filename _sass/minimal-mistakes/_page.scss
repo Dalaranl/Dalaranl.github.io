@@ -30,6 +30,11 @@ body {
           flex-direction: column;
 }
 
+// 댓글 css 추가
+.utterances {
+  max-width: 100% !important;
+}
+// _
 .initial-content,
 .search-content {
   flex: 1 0 auto;
