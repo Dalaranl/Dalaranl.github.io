@@ -1,6 +1,6 @@
 # main links
 main:
-  - title: "Year-Archive"
+  - title: "Posts"
     url: /year-archive/
   - title: "Category"
     url: /categories/
@@ -23,5 +23,7 @@ docs:
         category: "css"
   - title: "Algorithm"
     children:
+      - title: "method"
+        url: /categories/method
       - title: "algorithm"
-        url: /tags/
+        url: /categories/algorithm

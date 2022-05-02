@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Search | Log Archive</title>
+<!-- begin _includes/seo.html --><title>algorithm algorithm | Log Archive</title>
 <meta name="description" content="개발관련 글을 기록하는 곳입니다.">
 
 
@@ -20,8 +20,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="Log Archive">
-<meta property="og:title" content="Search">
-<meta property="og:url" content="http://localhost:4000/search/">
+<meta property="og:title" content="algorithm algorithm">
+<meta property="og:url" content="http://localhost:4000/categories/algorithm">
 
 
   <meta property="og:description" content="개발관련 글을 기록하는 곳입니다.">
@@ -43,7 +43,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/search/">
+<link rel="canonical" href="http://localhost:4000/categories/algorithm">
 
 
 
@@ -101,7 +101,7 @@
 
   </head>
 
-  <body class="layout--search">
+  <body class="layout--archive">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -169,7 +169,17 @@
         <span class="sep">/</span>
       
       
-        <li class="current">Search</li>
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories" itemprop="item"><span itemprop="name">Categories</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">algorithm algorithm</li>
       
     
   </ol>
@@ -345,7 +355,7 @@
             <li><a href="/categories/method">method ()</a></li>
           
           
-            <li><a href="/categories/algorithm">algorithm ()</a></li>
+            <li><a href="/categories/algorithm" class="active">algorithm ()</a></li>
           
         </ul>
       </li>
@@ -361,14 +371,12 @@
 
   <div class="archive">
     
-      <h1 id="page-title" class="page__title">Search</h1>
+      <h1 id="page-title" class="page__title">algorithm algorithm</h1>
+    
     
 
-    
-<input type="text" id="search" class="search-input" placeholder="검색어를 입력하세요..." />
-        <div id="results" class="results"></div></div>
+  </div>
 </div>
-
     </div>
 
     
@@ -418,10 +426,6 @@
 
 
 
-
-<script src="/assets/js/lunr/lunr.min.js"></script>
-<script src="/assets/js/lunr/lunr-store.js"></script>
-<script src="/assets/js/lunr/lunr-en.js"></script>
 
 
 
