@@ -10,4 +10,10 @@ var store = [{
         "tags": ["JavaScript","연산자","typeof","Data type","원시값","Primitive type","Reference type"],
         "url": "/javascript/typeof/",
         "teaser": "/assets/thumbnail/javascript.png"
+      },{
+        "title": "객체 지향 프로그래밍",
+        "excerpt":"  흔히 JavaScript에 대해 설명하라 하면 자주 등장하는 단어가 객체 지향 언어이다. 이외에도 프로그래밍을 하다보면 객체 지향 프로그래밍이라는 단어를 종종 듣게된다. 이번 포스팅에서는 객체 지향 프로그래밍이 무엇인지, JavaScript가 왜 객체지향 언어라 할 수 있는지에 대해 정리해 보려한다. 객체지향 프로그래밍이란 객체 지향 프로그래밍(영어: Object-Oriented Programming, OOP)은 컴퓨터 프로그래밍의 패러다임 중 하나이다. 객체...","categories": ["javascript"],
+        "tags": ["JavaScript","OOP","객체지향"],
+        "url": "/javascript/oop/",
+        "teaser": "/assets/thumbnail/javascript.png"
       }]
