@@ -10,7 +10,7 @@ main:
     url: /search/
 
 docs:
-  - title: "Vanilla"
+  - title: "Dev"
     children:
       - title: "HTML"
         url: /categories/html/
@@ -21,6 +21,9 @@ docs:
       - title: "css"
         url: /categories/css/
         category: "css"
+      - title: "react"
+        url: /categories/react/
+        category: "react"
   - title: "Algorithm"
     children:
       - title: "method"
