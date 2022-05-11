@@ -17,7 +17,7 @@ docs:
         category: "html"
       - title: "JavaScript"
         url: /categories/javascript/
-        category: "dev javascript"
+        category: "javascript"
       - title: "css"
         url: /categories/css/
         category: "css"
