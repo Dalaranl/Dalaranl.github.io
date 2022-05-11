@@ -4,7 +4,7 @@ title:  "React-Native installation"
 excerpt: "React-Native cli를 설치하고 android studio, Xcode와 연동해보자."
 
 categories:
-  - React-Native
+  - react-native
 tag: [react-native]
 header:
     teaser: ""
@@ -12,6 +12,8 @@ header:
 
 # React-Native
 >React Native는 React 와 앱 플랫폼의 기본 기능을 사용하여 Android 및 iOS 애플리케이션을 빌드하기 위한 오픈 소스 프레임워크입니다 . React Native를 사용하면 JavaScript를 사용하여 플랫폼의 API에 액세스할 수 있을 뿐만 아니라 React 구성 요소를 사용하여 UI의 모양과 동작을 설명할 수 있습니다. 재사용 가능하고 중첩 가능한 코드 번들입니다. -React Native-
+
+React-Native는 설치 시 mac, version 등 개발 환경에 따라 오류가 다르게 발생할 수 있다. 이런 경우에는 검색을 이용해 충돌을 잡아야 한다.
 
 ## Pros
   ### 1. 러닝 커브
@@ -150,15 +152,18 @@ Object-C 혹은 Swift로 개발된 오픈 라이브러리를 간편하게 확장
 
 !! 설치 전 OS 버전과 Xcode 버전을 확인 후 이와 호환되는 cocoapods 버전을 설치한다.
 
-1. gem을 이용하여 설치
+-  gem을 이용하여 설치
+
 ```
 sudo gem install cocoapods
 
 // 특정 version을 설치하고 싶을 때
+
 sudo gem install cocoapods -v (version)
 ```
 
-2. version 확인
+-  version 확인
+
 ```
 pod --version
 ```
@@ -203,10 +208,22 @@ yarn을 이용하여 구동한다.
 - command + R
   : 코드를 적용시키기 위해 화면을 Refresh 한다.
 
-- command + D - Disable Fast Refresh
+- command + D(debug menu) - Enable Fast Refresh
   : Refresh를 자동으로 해준다.
 
+## Andriod
+yarn을 이용하여 구동한다.
 
+```
+yarn android
+```
+
+### command
+- R + R (2번 연타)
+  : 코드를 적용시키기 위해 화면을 Refresh 한다.
+
+- command + M(debug menu) - Enable Fast Refresh
+  : Refresh를 자동으로 해준다.
 
 
 

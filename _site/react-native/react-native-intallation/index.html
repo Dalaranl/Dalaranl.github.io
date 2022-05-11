@@ -1,0 +1,1095 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>React-Native installation | Log Archive</title>
+<meta name="description" content="React-Native cli를 설치하고 android studio, Xcode와 연동해보자.">
+
+
+  <meta name="author" content="Dalaran">
+  
+  <meta property="article:author" content="Dalaran">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="Log Archive">
+<meta property="og:title" content="React-Native installation">
+<meta property="og:url" content="http://localhost:4000/react-native/react-native-intallation/">
+
+
+  <meta property="og:description" content="React-Native cli를 설치하고 android studio, Xcode와 연동해보자.">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/745744.png">
+
+
+
+
+
+  <meta property="article:published_time" content="2022-05-11T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/react-native/react-native-intallation/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Dalaran",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+  <meta name="naver-site-verification" content="5a03923996982e5e7ee6afb586d42ab3578202c8">
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Log Archive Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Log Archive
+          <span class="site-subtitle">Dalaran's Blog</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/year-archive/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tag</a>
+            </li><li class="masthead__menu-item">
+              <a href="/search/">Search</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#react-native" itemprop="item"><span itemprop="name">React native</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">React-Native installation</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/profile.jpeg" alt="Dalaran" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Dalaran</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>꾸준함의 미학</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">South Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:minjiwr123@gmail.com" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/Dalaranl" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+      
+      <li>
+        <a href="">📂&nbsp;<span style="font-family:'Cafe24Oneprettynight'"">전체 글 수</style> <span style="font-family:'Coming Soon';">6</style> <span style="font-family:'Cafe24Oneprettynight';">개</style></a> 
+      </li>
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">토글 메뉴</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">Dev</span>
+        
+        
+        <ul>
+          
+          
+            <li><a href="/categories/html/">HTML (1)</a></li>
+          
+          
+            <li><a href="/categories/javascript/">JavaScript (2)</a></li>
+          
+          
+            <li><a href="/categories/css/">css (1)</a></li>
+          
+          
+            <li><a href="/categories/react/">react (2)</a></li>
+          
+          
+            <li><a href="/categories/react-native/">react-native (1)</a></li>
+          
+        </ul>
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">Algorithm</span>
+        
+        
+        <ul>
+          
+          
+            <li><a href="/categories/method">method ()</a></li>
+          
+          
+            <li><a href="/categories/algorithm">algorithm ()</a></li>
+          
+        </ul>
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="React-Native installation">
+    <meta itemprop="description" content="React-Native cli를 설치하고 android studio, Xcode와 연동해보자.">
+    <meta itemprop="datePublished" content="2022-05-11T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/react-native/react-native-intallation/" class="u-url" itemprop="url">React-Native installation
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-11T00:00:00+09:00">2022-05-11</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Contents</h4></header>
+              <ul class="toc__menu"><li><a href="#react-native">React-Native</a><ul><li><a href="#pros">Pros</a></li><li><a href="#cons">Cons</a></li></ul></li><li><a href="#installation">Installation</a><ul><li><a href="#nvm">NVM</a></li><li><a href="#android-studio">Android Studio</a></li><li><a href="#oracle-java">Oracle Java</a></li><li><a href="#xcode">Xcode</a></li><li><a href="#cocoapod">CocoaPod</a></li><li><a href="#react-native-cli">React-Native CLi</a></li></ul></li><li><a href="#프로젝트-생성">프로젝트 생성</a></li><li><a href="#연동-확인">연동 확인</a><ul><li><a href="#ios">iOS</a><ul><li><a href="#command">command</a></li></ul></li><li><a href="#andriod">Andriod</a><ul><li><a href="#command-1">command</a></li></ul></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="react-native">React-Native</h1>
+<blockquote>
+  <p>React Native는 React 와 앱 플랫폼의 기본 기능을 사용하여 Android 및 iOS 애플리케이션을 빌드하기 위한 오픈 소스 프레임워크입니다 . React Native를 사용하면 JavaScript를 사용하여 플랫폼의 API에 액세스할 수 있을 뿐만 아니라 React 구성 요소를 사용하여 UI의 모양과 동작을 설명할 수 있습니다. 재사용 가능하고 중첩 가능한 코드 번들입니다. -React Native-</p>
+</blockquote>
+
+<p>React-Native는 설치 시 mac, version 등 개발 환경에 따라 오류가 다르게 발생할 수 있다. 이런 경우에는 검색을 이용해 충돌을 잡아야 한다.</p>
+
+<h2 id="pros">Pros</h2>
+<p>### 1. 러닝 커브
+  JavaScript 기반이기 때문에 JS를 사용하는 Front-end, Back-end 개발자라면 다른 언어를 학습하지 않아도 된다.</p>
+
+<p>### 2. 컴포넌트 기반 (재사용성)
+  React에서 파생되었기 때문에 Component 기반으로 구성된다. 때문에 생산성과 재사용성에서 메리트를 갖는다.</p>
+
+<p>### 3. 멀티 플랫폼
+  하나의 코드로 iOS, Andriod 둘 다 배포가 가능하다. (단, iOS의 경우 mac 에서만 가능하다.)</p>
+
+<h2 id="cons">Cons</h2>
+<p>### 1. 성능
+  Hybrid App 이기 때문에 Native 개발 방식(kotlin, swift)에 비해 성능이 떨어진다.</p>
+
+<p>### 2. 오픈 소스
+  오픈 소스인 만킴 업데이트가 자주 되며, 그에 따른 버그 또한 동반될 수 있다.</p>
+
+<p><br /></p>
+
+<h1 id="installation">Installation</h1>
+<h2 id="nvm">NVM</h2>
+<p>nodejs를 효율적으로 관리하기 위해 NVM(Node Version Manager)을 설치한 후 NVM을 통해 node를 설치한다. 작업은 터미널에서 진행된다.</p>
+
+<p>– NVM git : <a href="https://github.com/nvm-sh/nvm">https://github.com/nvm-sh/nvm</a></p>
+
+<ol>
+  <li>nvm 설치
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>프로필 파일 설정 (~/.bash_profile, ~/.zshrc, ~/.profile, ~/.bashrc) editor는 vi, vim, nano 중 편한걸로 사용하면 된다.
+ex) vi ~/.zshrc
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] &amp;&amp; printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] &amp;&amp; \. "$NVM_DIR/nvm.sh" # This loads nvm
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>프로필 파일 적용
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>source (프로필 파일) 
+// ex) source ~/.zshrc
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>node 설치
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>nvm install (node version)
+// ex) nvm install 16.15.0
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>설치 node가 여러개인 경우 version 선택 (하나라면 생략 가능)
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>nvm use (node version)
+// ex) nvm install 16.15.0
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>설치 버전 확인
+npm은 node 설치시 자동으로 설치된다.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>node -v
+npm --version
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+</ol>
+
+<p><br /></p>
+
+<h2 id="android-studio">Android Studio</h2>
+<p>– site : https://developer.android.com/studio?gclid=Cj0KCQjwmuiTBhDoARIsAPiv6L96YmsgQaA6C0sw7QrkwrWR7cOENZuCZNNmzC8NhfdFaad-PClQpoIaAsDJEALw_wcB&amp;gclsrc=aw.ds</p>
+
+<ol>
+  <li>
+    <p>해당 링크에서 Download Andriod Studio 클릭 후 설치</p>
+  </li>
+  <li>
+    <p>More Actions - SDK Manager 설정
+Show Package Details 클릭 한 후 필요한 SDK를 설치한다. (최신 버전이나 React-Native doc에서 추천하는 SKD를 설치한다.)</p>
+  </li>
+</ol>
+
+<p><img src="/assets/images/2022-05-11/SDK_Manager.png" /></p>
+
+<ol>
+  <li>More Atcions - Virture Device Manager 설정
+    <ul>
+      <li>create device 클릭 후 원하는 device를 정한 후 Next</li>
+      <li>target을 설치한 SDK로 설정한 후 Next
+<img src="/assets/images/2022-05-11/AVD_Setting.png" /></li>
+      <li>AVM Name 및 필요 설정 후 Finish
+<img src="/assets/images/2022-05-11/AVD_Finish.png" /></li>
+    </ul>
+  </li>
+  <li>환경 변수 프로필 파일에 설정  (~/.bash_profile, ~/.zshrc, ~/.profile, ~/.bashrc) editor는 vi, vim, nano 중 편한걸로 사용하면 된다.
+ex) vi ~/.zshrc
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>export ANDROID_SDK_ROOT=/Users/dalaran/Library/Android/sdk
+export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>이 때 ANDROID_SDK_ROOT 가 Android SDK Location 경로와 같아야한다.
+<img src="/assets/images/2022-05-11/SDK_Location.png" /></p>
+
+<ol>
+  <li>변경사항 적용
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>source ~/.zshrc
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>adb로 적용 확인
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre> ✘ Dalaran ✨   ~/Desktop/blog/dalaranl.github.io   master ±  adb
+Android Debug Bridge version 1.0.41
+Version 33.0.1-8253317
+Installed as /Users/dalaran/Library/Android/sdk/platform-tools/adb
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+</ol>
+
+<p><br /></p>
+
+<h2 id="oracle-java">Oracle Java</h2>
+<p>–site : https://www.oracle.com/java/technologies/downloads/</p>
+
+<p>해당 링크에서 JAVA SE 다운로드.</p>
+
+<ul>
+  <li>version 확인
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>java --version
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>설치 파일 위치
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>/Library/Java/JavaVirtualMachines/
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="xcode">Xcode</h2>
+<ol>
+  <li>AppStore에서 Xcode 검색 후 설치</li>
+  <li>Xcode 설정
+Xcode - Preferences - Location - Command Line Tools 선택
+<img src="/assets/images/2022-05-11/Xcode.png" /></li>
+</ol>
+
+<p><br /></p>
+
+<h2 id="cocoapod">CocoaPod</h2>
+<p>Object-C 혹은 Swift로 개발된 오픈 라이브러리를 간편하게 확장 시키게 도와주는 iOS용 프로그램이다.</p>
+
+<p>!! 설치 전 OS 버전과 Xcode 버전을 확인 후 이와 호환되는 cocoapods 버전을 설치한다.</p>
+
+<ul>
+  <li>gem을 이용하여 설치</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>sudo gem install cocoapods
+
+// 특정 version을 설치하고 싶을 때
+
+sudo gem install cocoapods -v (version)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<ul>
+  <li>version 확인</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>pod --version
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="react-native-cli">React-Native CLi</h2>
+<ol>
+  <li>설치
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>npm install -g react-native-cli
+// -g 는 Global 옵션이다.
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+</ol>
+
+<p><br /></p>
+
+<h1 id="프로젝트-생성">프로젝트 생성</h1>
+<p>프로젝트를 생성할 폴더 위치에서 시작</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>react-native init (프로젝트 명)
+
+// version 지정
+
+react-native init --version (version) (프로젝트 명)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h1 id="연동-확인">연동 확인</h1>
+<h2 id="ios">iOS</h2>
+<p>yarn을 이용하여 구동한다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>1. yarn install
+
+2. cd ./ios
+
+3. pod install
+
+4. yarn ios
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>만약 build error가 발생할 경우 검색으로 해결한다.</p>
+
+<h3 id="command">command</h3>
+<ul>
+  <li>
+    <dl>
+      <dt>command + R</dt>
+      <dd>코드를 적용시키기 위해 화면을 Refresh 한다.</dd>
+    </dl>
+  </li>
+  <li>
+    <dl>
+      <dt>command + D(debug menu) - Enable Fast Refresh</dt>
+      <dd>Refresh를 자동으로 해준다.</dd>
+    </dl>
+  </li>
+</ul>
+
+<h2 id="andriod">Andriod</h2>
+<p>yarn을 이용하여 구동한다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>yarn android
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="command-1">command</h3>
+<ul>
+  <li>
+    <dl>
+      <dt>R + R (2번 연타)</dt>
+      <dd>코드를 적용시키기 위해 화면을 Refresh 한다.</dd>
+    </dl>
+  </li>
+  <li>
+    <dl>
+      <dt>command + M(debug menu) - Enable Fast Refresh</dt>
+      <dd>Refresh를 자동으로 해준다.</dd>
+    </dl>
+  </li>
+</ul>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#react-native" class="page__taxonomy-item p-category" rel="tag">react-native</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#react-native" class="page__taxonomy-item p-category" rel="tag">react-native</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-05-11T00:00:00+09:00">2022-05-11</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=React-Native+installation%20http%3A%2F%2Flocalhost%3A4000%2Freact-native%2Freact-native-intallation%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Freact-native%2Freact-native-intallation%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Freact-native%2Freact-native-intallation%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/react/redux-mobx-context/" class="pagination--pager" title="상태관리 라이브러리의 장단점 정리
+">이전</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <img src="/assets/thumbnail/react.png" alt="">
+      </div>
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/react/redux-mobx-context/" rel="permalink">상태관리 라이브러리의 장단점 정리
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-05T00:00:00+09:00">2022-05-05</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">상태관리 라이브러리는 여러가지가 있다. 각 라이브러리의 장단점을 알아보자.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <img src="/assets/thumbnail/javascript.png" alt="">
+      </div>
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/react/class-and-function/" rel="permalink">Class와 Function
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-05T00:00:00+09:00">2022-05-05</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Class와 Function의 차이점을 알아보고 클래스형에서 함수형으로 변화하게된 이유를 살펴보자.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <img src="/assets/thumbnail/javascript.png" alt="">
+      </div>
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/javascript/oop/" rel="permalink">객체 지향 프로그래밍
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-04T00:00:00+09:00">2022-05-04</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">객체 지향 프로그래밍이 무엇이며 JavaScript가 객체지향인 이유가 뭘까?
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <img src="/assets/thumbnail/javascript.png" alt="">
+      </div>
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/javascript/typeof/" rel="permalink">typeof와 Data type
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-02T00:00:00+09:00">2022-05-02</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">typeof을 이용해 데이터 타입에 대해 알아보자.
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/Dalaranl" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Dalaran. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'Dalaranl/dalaranl.github.io');
+    script.setAttribute('issue-term', 'pathname');
+    
+    script.setAttribute('theme', 'photon-dark');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>

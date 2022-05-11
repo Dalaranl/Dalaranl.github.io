@@ -1,5 +1,5 @@
 ---
-title: "dev css"
+title: "css"
 layout: archive
 permalink: categories/css
 author_profile: true

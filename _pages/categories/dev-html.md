@@ -1,5 +1,5 @@
 ---
-title: "dev html"
+title: "html"
 layout: archive
 permalink: categories/html
 author_profile: true

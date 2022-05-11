@@ -22,4 +22,16 @@ var store = [{
         "tags": ["react","class","function"],
         "url": "/react/class-and-function/",
         "teaser": "/assets/thumbnail/javascript.png"
+      },{
+        "title": "상태관리 라이브러리의 장단점 정리",
+        "excerpt":"React로 개발을 하다보면 props를 많이 사용하게 된다. 하지만 이 과정에서 구조상 props가 너무 깊게 내려간다거나 같은 하나의 데이터를 여러 컴포넌트에서 공통적으로 사용해야 하는 경우가 발생한다. 이 경우 상태 관리를 이용하여 이를 해결할 수 있는데, 상황에 따라 혹은 선호도에 따라 선택할 수 있는 라이브러리가 많다. 이번 포스팅에서는 상태관리 툴에 약간의 장단점과...","categories": ["react"],
+        "tags": ["react","redux","mobx","context","recoil"],
+        "url": "/react/redux-mobx-context/",
+        "teaser": "/assets/thumbnail/react.png"
+      },{
+        "title": "React-Native installation",
+        "excerpt":"React-Native React Native는 React 와 앱 플랫폼의 기본 기능을 사용하여 Android 및 iOS 애플리케이션을 빌드하기 위한 오픈 소스 프레임워크입니다 . React Native를 사용하면 JavaScript를 사용하여 플랫폼의 API에 액세스할 수 있을 뿐만 아니라 React 구성 요소를 사용하여 UI의 모양과 동작을 설명할 수 있습니다. 재사용 가능하고 중첩 가능한 코드 번들입니다. -React Native-...","categories": ["react-native"],
+        "tags": ["react-native"],
+        "url": "/react-native/react-native-intallation/",
+        "teaser": ""
       }]

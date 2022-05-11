@@ -1,0 +1,289 @@
+I"�.<h1 id="react-native">React-Native</h1>
+<blockquote>
+  <p>React Native는 React 와 앱 플랫폼의 기본 기능을 사용하여 Android 및 iOS 애플리케이션을 빌드하기 위한 오픈 소스 프레임워크입니다 . React Native를 사용하면 JavaScript를 사용하여 플랫폼의 API에 액세스할 수 있을 뿐만 아니라 React 구성 요소를 사용하여 UI의 모양과 동작을 설명할 수 있습니다. 재사용 가능하고 중첩 가능한 코드 번들입니다. -React Native-</p>
+</blockquote>
+
+<p>React-Native는 설치 시 mac, version 등 개발 환경에 따라 오류가 다르게 발생할 수 있다. 이런 경우에는 검색을 이용해 충돌을 잡아야 한다.</p>
+
+<h2 id="pros">Pros</h2>
+<p>### 1. 러닝 커브
+  JavaScript 기반이기 때문에 JS를 사용하는 Front-end, Back-end 개발자라면 다른 언어를 학습하지 않아도 된다.</p>
+
+<p>### 2. 컴포넌트 기반 (재사용성)
+  React에서 파생되었기 때문에 Component 기반으로 구성된다. 때문에 생산성과 재사용성에서 메리트를 갖는다.</p>
+
+<p>### 3. 멀티 플랫폼
+  하나의 코드로 iOS, Andriod 둘 다 배포가 가능하다. (단, iOS의 경우 mac 에서만 가능하다.)</p>
+
+<h2 id="cons">Cons</h2>
+<p>### 1. 성능
+  Hybrid App 이기 때문에 Native 개발 방식(kotlin, swift)에 비해 성능이 떨어진다.</p>
+
+<p>### 2. 오픈 소스
+  오픈 소스인 만킴 업데이트가 자주 되며, 그에 따른 버그 또한 동반될 수 있다.</p>
+
+<p><br /></p>
+
+<h1 id="installation">Installation</h1>
+<h2 id="nvm">NVM</h2>
+<p>nodejs를 효율적으로 관리하기 위해 NVM(Node Version Manager)을 설치한 후 NVM을 통해 node를 설치한다. 작업은 터미널에서 진행된다.</p>
+
+<p>– NVM git : <a href="https://github.com/nvm-sh/nvm">https://github.com/nvm-sh/nvm</a></p>
+
+<ol>
+  <li>nvm 설치
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>프로필 파일 설정 (~/.bash_profile, ~/.zshrc, ~/.profile, ~/.bashrc) editor는 vi, vim, nano 중 편한걸로 사용하면 된다.
+ex) vi ~/.zshrc
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] &amp;&amp; printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] &amp;&amp; \. "$NVM_DIR/nvm.sh" # This loads nvm
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>프로필 파일 적용
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>source (프로필 파일) 
+// ex) source ~/.zshrc
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>node 설치
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>nvm install (node version)
+// ex) nvm install 16.15.0
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>설치 node가 여러개인 경우 version 선택 (하나라면 생략 가능)
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>nvm use (node version)
+// ex) nvm install 16.15.0
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>설치 버전 확인
+npm은 node 설치시 자동으로 설치된다.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>node -v
+npm --version
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+</ol>
+
+<p><br /></p>
+
+<h2 id="android-studio">Android Studio</h2>
+<p>– site : https://developer.android.com/studio?gclid=Cj0KCQjwmuiTBhDoARIsAPiv6L96YmsgQaA6C0sw7QrkwrWR7cOENZuCZNNmzC8NhfdFaad-PClQpoIaAsDJEALw_wcB&amp;gclsrc=aw.ds</p>
+
+<ol>
+  <li>
+    <p>해당 링크에서 Download Andriod Studio 클릭 후 설치</p>
+  </li>
+  <li>
+    <p>More Actions - SDK Manager 설정
+Show Package Details 클릭 한 후 필요한 SDK를 설치한다. (최신 버전이나 React-Native doc에서 추천하는 SKD를 설치한다.)</p>
+  </li>
+</ol>
+
+<p><img src="/assets/images/2022-05-11/SDK_Manager.png" /></p>
+
+<ol>
+  <li>More Atcions - Virture Device Manager 설정
+    <ul>
+      <li>create device 클릭 후 원하는 device를 정한 후 Next</li>
+      <li>target을 설치한 SDK로 설정한 후 Next
+<img src="/assets/images/2022-05-11/AVD_Setting.png" /></li>
+      <li>AVM Name 및 필요 설정 후 Finish
+<img src="/assets/images/2022-05-11/AVD_Finish.png" /></li>
+    </ul>
+  </li>
+  <li>환경 변수 프로필 파일에 설정  (~/.bash_profile, ~/.zshrc, ~/.profile, ~/.bashrc) editor는 vi, vim, nano 중 편한걸로 사용하면 된다.
+ex) vi ~/.zshrc
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>export ANDROID_SDK_ROOT=/Users/dalaran/Library/Android/sdk
+export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>이 때 ANDROID_SDK_ROOT 가 Android SDK Location 경로와 같아야한다.
+<img src="/assets/images/2022-05-11/SDK_Location.png" /></p>
+
+<ol>
+  <li>변경사항 적용
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>source ~/.zshrc
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>adb로 적용 확인
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre> ✘ Dalaran ✨   ~/Desktop/blog/dalaranl.github.io   master ±  adb
+Android Debug Bridge version 1.0.41
+Version 33.0.1-8253317
+Installed as /Users/dalaran/Library/Android/sdk/platform-tools/adb
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+</ol>
+
+<p><br /></p>
+
+<h2 id="oracle-java">Oracle Java</h2>
+<p>–site : https://www.oracle.com/java/technologies/downloads/</p>
+
+<p>해당 링크에서 JAVA SE 다운로드.</p>
+
+<ul>
+  <li>version 확인
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>java --version
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>설치 파일 위치
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>/Library/Java/JavaVirtualMachines/
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="xcode">Xcode</h2>
+<ol>
+  <li>AppStore에서 Xcode 검색 후 설치</li>
+  <li>Xcode 설정
+Xcode - Preferences - Location - Command Line Tools 선택
+<img src="/assets/images/2022-05-11/Xcode.png" /></li>
+</ol>
+
+<p><br /></p>
+
+<h2 id="cocoapod">CocoaPod</h2>
+<p>Object-C 혹은 Swift로 개발된 오픈 라이브러리를 간편하게 확장 시키게 도와주는 iOS용 프로그램이다.</p>
+
+<p>!! 설치 전 OS 버전과 Xcode 버전을 확인 후 이와 호환되는 cocoapods 버전을 설치한다.</p>
+
+<ul>
+  <li>gem을 이용하여 설치</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>sudo gem install cocoapods
+
+// 특정 version을 설치하고 싶을 때
+
+sudo gem install cocoapods -v (version)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<ul>
+  <li>version 확인</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>pod --version
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="react-native-cli">React-Native CLi</h2>
+<ol>
+  <li>설치
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>npm install -g react-native-cli
+// -g 는 Global 옵션이다.
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+</ol>
+
+<p><br /></p>
+
+<h1 id="프로젝트-생성">프로젝트 생성</h1>
+<p>프로젝트를 생성할 폴더 위치에서 시작</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>react-native init (프로젝트 명)
+
+// version 지정
+
+react-native init --version (version) (프로젝트 명)
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h1 id="연동-확인">연동 확인</h1>
+<h2 id="ios">iOS</h2>
+<p>yarn을 이용하여 구동한다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>1. yarn install
+
+2. cd ./ios
+
+3. pod install
+
+4. yarn ios
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>만약 build error가 발생할 경우 검색으로 해결한다.</p>
+
+<h3 id="command">command</h3>
+<ul>
+  <li>
+    <dl>
+      <dt>command + R</dt>
+      <dd>코드를 적용시키기 위해 화면을 Refresh 한다.</dd>
+    </dl>
+  </li>
+  <li>
+    <dl>
+      <dt>command + D(debug menu) - Enable Fast Refresh</dt>
+      <dd>Refresh를 자동으로 해준다.</dd>
+    </dl>
+  </li>
+</ul>
+
+<h2 id="andriod">Andriod</h2>
+<p>yarn을 이용하여 구동한다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>yarn android
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="command-1">command</h3>
+<ul>
+  <li>
+    <dl>
+      <dt>R + R (2번 연타)</dt>
+      <dd>코드를 적용시키기 위해 화면을 Refresh 한다.</dd>
+    </dl>
+  </li>
+  <li>
+    <dl>
+      <dt>command + M(debug menu) - Enable Fast Refresh</dt>
+      <dd>Refresh를 자동으로 해준다.</dd>
+    </dl>
+  </li>
+</ul>
+
+:ET
