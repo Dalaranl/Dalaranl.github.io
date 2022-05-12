@@ -2,7 +2,6 @@
 layout: single
 title:  "React-Native installation"
 excerpt: "React-Native cli를 설치하고 android studio, Xcode와 연동해보자."
-
 categories:
   - react-native
 tag: [react-native]

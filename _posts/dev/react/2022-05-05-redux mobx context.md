@@ -2,7 +2,6 @@
 layout: single
 title:  "상태관리 라이브러리의 장단점 정리"
 excerpt: "상태관리 라이브러리는 여러가지가 있다. 각 라이브러리의 장단점을 알아보자."
-
 categories:
   - react
 tag: [react, redux, mobx, context, recoil]
