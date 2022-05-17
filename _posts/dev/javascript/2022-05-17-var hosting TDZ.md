@@ -208,7 +208,7 @@ TDZ(Temporal Dead Zone)는 일시적인 사각지대를 뜻한다. 이에 대해
 <br/>
 
 ## var와 let, const의 차이
-var는 실행 컨텍스트에 변수가 등록되는 것과 동시에 undefined로 초기화되며 메모리가 할당된다. 즉, 선언과 초기화가 동시에 일어난다. 하지만 let과 const는 실행 컨텍스트에 변수가 등록은 되지만 TDZ에 의해 메모리 할당이 되지 않는다. 때문에 var, let, const 모두 호이스팅은 되지만 var는 "undefined"로 let과 cosnt는 ReferenceError가 발생하게 되는 것이다.
+var는 실행 컨텍스트에 변수가 등록되는 것과 동시에 undefined로 초기화되며 메모리가 할당된다. 즉, 선언과 초기화가 동시에 일어난다. 하지만 let과 const는 실행 컨텍스트에 변수가 등록은 되지만 TDZ에 의해 메모리 할당이 되지 않는다.(선언과 초기화가 분리되어 진행된다.) 때문에 var, let, const 모두 호이스팅은 되지만 var는 "undefined"로 let과 cosnt는 ReferenceError가 발생하게 되는 것이다.
 
 <br/>
 
