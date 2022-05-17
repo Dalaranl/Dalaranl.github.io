@@ -34,4 +34,16 @@ var store = [{
         "tags": ["react-native"],
         "url": "/react-native/react-native-intallation/",
         "teaser": ""
+      },{
+        "title": "useMemo, useCallback, React.memo",
+        "excerpt":"React는 state, props의 값이 바뀌거나 부모 컴포넌트가 렌더링 됐을 떄 렌더링이 발생하는 특성이 있다. 때문에 상위 컴포넌트가 렌더링 됐을 때 하위 컴포넌트도 같이 렌더링이 되는 경우가 많다. 이러한 문제를 최적화 하기위해 제공하는 기능(hooks)인 useMemo, useCallback, React.memo에 대해 알아보도록 하자. (모든 에제코드는 react doc에 있는 예제이다.) Memoization 메모이제이션(memoization)은 컴퓨터 프로그램이 동일한...","categories": ["react"],
+        "tags": ["react","useMemo","useCallback","React.memo"],
+        "url": "/react/useMemo,-useCallback,-React.memo/",
+        "teaser": "/assets/thumbnail/react.png"
+      },{
+        "title": "var로 알아보는 Hoisting, TDZ",
+        "excerpt":"Var var는 변수(var, let, const)들 중 하나로 초기 자바스크립트에서 많이 사용되던 변수이다. 요즘에는 거의 사용하지 않지만 과거의 프로젝트일 경우 충분히 만날 수 있으며, let과 const와는 다른 특성이 있기 때문에 var를 let, const로 변환하는 과정에서 예상치 못한 오류를 만날 수 있다. 블록 스코프 var는 블록 스코프가 없다. 때문에 var로 선언한 변수의...","categories": ["javascript"],
+        "tags": ["JavaScript","var","hoisting","TDZ"],
+        "url": "/javascript/var-hosting-TDZ/",
+        "teaser": "/assets/thumbnail/javascript.png"
       }]

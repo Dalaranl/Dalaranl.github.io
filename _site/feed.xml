@@ -1,4 +1,533 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-05-12T03:53:49+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Log Archive</title><subtitle>개발관련 글을 기록하는 곳입니다.</subtitle><author><name>Dalaran</name></author><entry><title type="html">React-Native installation</title><link href="http://localhost:4000/react-native/react-native-intallation/" rel="alternate" type="text/html" title="React-Native installation" /><published>2022-05-11T00:00:00+09:00</published><updated>2022-05-11T00:00:00+09:00</updated><id>http://localhost:4000/react-native/react%20native%20intallation</id><content type="html" xml:base="http://localhost:4000/react-native/react-native-intallation/"><![CDATA[<h1 id="react-native">React-Native</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-05-17T23:39:21+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Log Archive</title><subtitle>개발관련 글을 기록하는 곳입니다.</subtitle><author><name>Dalaran</name></author><entry><title type="html">var로 알아보는 Hoisting, TDZ</title><link href="http://localhost:4000/javascript/var-hosting-TDZ/" rel="alternate" type="text/html" title="var로 알아보는 Hoisting, TDZ" /><published>2022-05-17T00:00:00+09:00</published><updated>2022-05-17T00:00:00+09:00</updated><id>http://localhost:4000/javascript/var%20hosting%20TDZ</id><content type="html" xml:base="http://localhost:4000/javascript/var-hosting-TDZ/"><![CDATA[<h1 id="var">Var</h1>
+<p>var는 변수(var, let, const)들 중 하나로 초기 자바스크립트에서 많이 사용되던 변수이다. 요즘에는 거의 사용하지 않지만 과거의 프로젝트일 경우 충분히 만날 수 있으며, let과 const와는 다른 특성이 있기 때문에 var를 let, const로 변환하는 과정에서 예상치 못한 오류를 만날 수 있다.</p>
+
+<p><br /></p>
+
+<h2 id="블록-스코프">블록 스코프</h2>
+<p>var는 블록 스코프가 없다. 때문에 var로 선언한 변수의 스코프는 함수 스코프 이거나 전역 스코프이다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre><span class="k">if</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">var</span><span class="dl">"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span> <span class="c1">// "var"</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">let</span><span class="dl">"</span><span class="p">;</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="c1">// "let"</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span> <span class="c1">// a is not defined</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>위의 코드를 보면 let은 if문 안에서만 접근이 가능하다. if문 밖에서 접근하면 오류가 발생하는 것을 볼 수 있다. 하지만 var는 블록 스코프가 없기때문에 해당 코드에서는 전역 스코프를 갖게되고 if문 밖에서도 접근에 가능해지는 것이다. 이는 for 문에서도 같게 동작한다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span> <span class="c1">// 10</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>하지만 함수안에 선언된 var라면 함수 스코프를 갖게 때문에 함수 밖에서는 접근이 불가능하다. (안에서는 위의 조건(if, for)을 같게 적용받는다. )</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">testVar</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">block</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Var</span><span class="dl">"</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">block</span><span class="p">);</span> <span class="c1">// "Var"</span>
+<span class="p">}</span>
+
+<span class="nx">testVar</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">block</span><span class="p">);</span> <span class="c1">// block is not defined</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="중복-선언">중복 선언</h2>
+<p>만약 cat 이라는 이름의 변수를 let으로 중복 선언 했다 가정하자. 이 때 우리는 에러가 발생하는 것을 확인 할 수 있다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="kd">let</span> <span class="nx">cat</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">레그돌</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">cat</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">먼치킨</span><span class="dl">"</span><span class="p">;</span> 
+<span class="c1">// Error: Identifier 'cat' has already been declared.</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>하지만 var의 경우 오류가 발생하지 않으며 이전 선언된 변수가 무시되며 다시 선언 된다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">cat</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">레그돌</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">cat</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">먼치킨</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">cat</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">러시안 블루</span><span class="dl">"</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">cat</span><span class="p">)</span> <span class="c1">// "러시안 블루"</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="선언-전-사용">선언 전 사용</h2>
+<p>var가 함수 안에 선언 되었다면 이는 함수가 시작 될 때 처리된다. 만약 전역에서 var를 선언했다면 이는 Javascript가 시작 될 떄 처리된다. 이와 같은 특징 때문에 아래의 3 코드는 모두 같게 동작된다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">test1</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">cat</span><span class="p">;</span>
+  <span class="nx">cat</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">레그돌</span><span class="dl">"</span><span class="p">;</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">cat</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nx">test1</span><span class="p">()</span>
+
+<span class="kd">function</span> <span class="nx">test2</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">cat</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">레그돌</span><span class="dl">"</span><span class="p">;</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">cat</span><span class="p">)</span>
+
+  <span class="kd">var</span> <span class="nx">cat</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">test2</span><span class="p">()</span>
+
+<span class="kd">function</span> <span class="nx">test3</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">cat</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">레그돌</span><span class="dl">"</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">cat</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">cat</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nx">test3</span><span class="p">()</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>위의 test2를 보면 var cat의 선언이 제일 끝에 되어있지만 에러가 발생하지 않는다. 이는 변수 선언이 함수의 시작과 동시에 이루어지기에 함수의 최상위로 끌어올려지는 것이다. 이러한 현상을 ‘호이스팅(Hoisting)’이라 한다.</p>
+
+<p><br />
+<br /></p>
+
+<h1 id="hoisting">Hoisting</h1>
+<blockquote>
+  <p>JavaScript에서 호이스팅(hoisting)이란, 인터프리터가 변수와 함수의 메모리 공간을 선언 전에 미리 할당하는 것을 의미합니다. - MDN -</p>
+</blockquote>
+
+<p>var 의 호이스팅은 위에 설명돼있기 떄문에 여기에서는 함수 Hoisting만 다루겠다.</p>
+
+<p><br /></p>
+
+<h2 id="함수-호이스팅">함수 호이스팅</h2>
+<p>함수의 호이스팅의 경우 함수가 함수 표현식인지 함수 선언식인지에 따라 결과가 다르다.</p>
+<h3 id="함수-선언식">함수 선언식</h3>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">hoisting</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">hello</span><span class="p">()</span>
+  
+  <span class="kd">function</span> <span class="nx">hello</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span><span class="p">)</span> <span class="c1">// hello</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">hoisting</span><span class="p">()</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>함수 선언식의 경우 정상적으로 호이스팅이 발생하는 것을 확인 할 수 있다.</p>
+
+<h3 id="함수-표현식">함수 표현식</h3>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">hoisting</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">hello</span><span class="p">()</span> <span class="c1">// hello is not a function</span>
+   
+  <span class="kd">var</span> <span class="nx">hello</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">hoisting</span><span class="p">()</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>함수 표현식의 경우 var를 사용했을 var에 대한 호이스팅은 발생하지만 함수 호출은 안 된다. 이는 var가 호이스팅 될 때 “undefined”로 초기화 되기 때문이다. (화살표 함수도 같은 현상이 발생한다.)</p>
+
+<p><br /></p>
+
+<h2 id="import">import</h2>
+<p>import 역시 호이스팅이 되기때문에 에러가 발생하지 않는다.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="nx">hellow</span><span class="p">();</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">hellow</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./hellow</span><span class="dl">'</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="let-const">let, const</h2>
+<p>위에서 호이스팅을 설명할 때 var만 예시로 들고 let과 const는 예시를 들지 않았다. 그러면 let과 const는 호이스팅이 되지 않는 것일까? 아래의 코드를 보자.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="nx">cat1</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">레그돌</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">cat1</span><span class="p">;</span>
+<span class="c1">// ReferenceError: Cannot access 'cat1' before initialization</span>
+
+<span class="nx">cat2</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">cat2</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">먼치킨</span><span class="dl">"</span><span class="p">;</span>
+<span class="c1">// ReferenceError: cat2 is not defined</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>let과 const는 위와 같이 ReferenceError가 발생하는 것을 볼 수 있다. 이러한 에러 때문에 let과 const는 호이스팅이 안 된다 라고 생각할 수 있지만 이는 잘못된 생각이다. let과 const는 호이스팅이 된다. 하지만 TDZ에 의해 접근이 금지되기 때문에 ReferenceError가 발생하는 것이다.</p>
+
+<p><br />
+<br /></p>
+
+<h1 id="tdztemporal-dead-zone">TDZ(Temporal Dead Zone)</h1>
+<p>TDZ(Temporal Dead Zone)는 일시적인 사각지대를 뜻한다. 이에 대해 알아보기 위해서는 변수 선언의 3단계에 대해 먼저 알아보자.</p>
+
+<p><br /></p>
+
+<h2 id="변수-선언의-3단계">변수 선언의 3단계</h2>
+<p>변수선언은 선언(Declaration phase), 초기화(Initialization phase), 할당(Assignment phase)으로 이루어 진다.</p>
+<h3 id="1-선언declaration-phase">1. 선언(Declaration phase)</h3>
+<p>변수를 실행 컨텍스트의 변수 객체에 등록하는 단계이다.</p>
+
+<h3 id="2-초기화initialization-phase">2. 초기화(Initialization phase)</h3>
+<p>실행 컨텍스트의 변수를 위해 메모리를 할당하는 과정으로 메모리가 만들어지면 처음에는 “undefined”가 할당된다.</p>
+
+<h3 id="3-할당assignment-phase">3. 할당(Assignment phase)</h3>
+<p>사용자가 undefined로 초기화된 메모리의 다른 값을 할당하는 단계이다.</p>
+
+<p><br /></p>
+
+<h2 id="var와-let-const의-차이">var와 let, const의 차이</h2>
+<p>var는 실행 컨텍스트에 변수가 등록되는 것과 동시에 undefined로 초기화되며 메모리가 할당된다. 즉, 선언과 초기화가 동시에 일어난다. 하지만 let과 const는 실행 컨텍스트에 변수가 등록은 되지만 TDZ에 의해 메모리 할당이 되지 않는다. 때문에 var, let, const 모두 호이스팅은 되지만 var는 “undefined”로 let과 cosnt는 ReferenceError가 발생하게 되는 것이다.</p>
+
+<p><br /></p>
+
+<h2 id="class">Class</h2>
+<p>class또한 TDZ의 영향을 받는다. 때문에 아래와 같이 호이스팅을 해도 TDZ에 의해 ReferenceError가 발생하게 된다.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">myName</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Name</span><span class="p">(</span><span class="dl">"</span><span class="s2">dalaran</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// ReferenceError</span>
+
+<span class="kd">class</span> <span class="nx">Name</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>만약 부모 클래스를 상속받았을 경우 super()를 호출 하기 전까지 this는 TDZ에 바인딩 되어 있다. 때문에 super()가 호출 되기 전에는 this를 사용할 수 없다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre><span class="kd">class</span> <span class="nx">Name</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nx">Job</span> <span class="kd">extends</span> <span class="nx">Name</span><span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">job</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">job</span> <span class="o">=</span> <span class="nx">job</span><span class="p">;</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">introduce</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Job</span><span class="p">(</span><span class="dl">"</span><span class="s2">dalaran</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">front-end</span><span class="dl">"</span><span class="p">);</span> 
+<span class="c1">// ReferenceError</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td><td class="rouge-code"><pre><span class="kd">class</span> <span class="nx">Name</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nx">Job</span> <span class="kd">extends</span> <span class="nx">Name</span><span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">job</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">job</span> <span class="o">=</span> <span class="nx">job</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">introduce</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Job</span><span class="p">(</span><span class="dl">"</span><span class="s2">dalaran</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">front-end</span><span class="dl">"</span><span class="p">);</span> 
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">introduce</span><span class="p">)</span>
+
+<span class="c1">// 출력</span>
+<span class="nx">Job</span> <span class="p">{</span>
+  <span class="nl">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">dalaran</span><span class="dl">'</span><span class="p">,</span>
+  <span class="nx">job</span><span class="p">:</span> <span class="dl">'</span><span class="s1">front-end</span><span class="dl">'</span><span class="p">,</span>
+  <span class="nx">__proto__</span><span class="p">:</span> <span class="p">{</span> <span class="nl">constructor</span><span class="p">:</span> <span class="nx">ƒ</span> <span class="nx">Job</span><span class="p">()</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="함수의-매개변수">함수의 매개변수</h2>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">dalaran</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Hello </span><span class="p">${</span><span class="nx">name</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nx">hello</span><span class="p">()</span> <span class="c1">//ReferenceError</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>함수의 매개변수는 전역 스코프와 함수 스코프의 중간 스코프에 위치한다. 위의 코드에서 hello의 매개변수 name은 자기 자신을 참조하는데 전역변수의 name보다 같은 스코프에 있는 name을 먼저 참조하게 된다. 때문에 TDZ에 영향을 받는 매개변수는 ReferenceError를 발생시키게 된다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">myName</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">dalaran</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">myName</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Hello </span><span class="p">${</span><span class="nx">name</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nx">hello</span><span class="p">()</span> <span class="c1">// "Hello dalaran"</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><br />
+<br /></p>
+
+<h1 id="정리">정리</h1>
+<ul>
+  <li>var는 블록 스코프가 없기때문에 전역 스코프 혹은 함수 스코프이다.</li>
+  <li>var는 중복 선언을 할 경우 에러를 발생시키지 않으며 마지막에 선언된 값을 갖게된다.</li>
+  <li>호이스팅은 var, let, const 등 다 발생한다. 이때 발생하는 ReferenceError는 TDZ에 의한 에러이다.</li>
+  <li>TDZ(Temporal Dead Zone)는 let, const, class, super(), 함수 매개변수에 영향을 준다.</li>
+</ul>]]></content><author><name>Dalaran</name></author><category term="javascript" /><category term="JavaScript" /><category term="var" /><category term="hoisting" /><category term="TDZ" /><summary type="html"><![CDATA[let, const, var의 차이점은 뭘까? 차이점을 알아보며 Hoisting, TDZ에 관해 알아보자.]]></summary></entry><entry><title type="html">useMemo, useCallback, React.memo</title><link href="http://localhost:4000/react/useMemo,-useCallback,-React.memo/" rel="alternate" type="text/html" title="useMemo, useCallback, React.memo" /><published>2022-05-13T00:00:00+09:00</published><updated>2022-05-13T00:00:00+09:00</updated><id>http://localhost:4000/react/useMemo,%20useCallback,%20React.memo</id><content type="html" xml:base="http://localhost:4000/react/useMemo,-useCallback,-React.memo/"><![CDATA[<p>React는 state, props의 값이 바뀌거나 부모 컴포넌트가 렌더링 됐을 떄 렌더링이 발생하는 특성이 있다. 때문에 상위 컴포넌트가 렌더링 됐을 때 하위 컴포넌트도 같이 렌더링이 되는 경우가 많다. 이러한 문제를 최적화 하기위해 제공하는 기능(hooks)인 useMemo, useCallback, React.memo에 대해 알아보도록 하자. (모든 에제코드는 react doc에 있는 예제이다.)</p>
+
+<h1 id="memoization">Memoization</h1>
+<blockquote>
+  <p>메모이제이션(memoization)은 컴퓨터 프로그램이 동일한 계산을 반복해야 할 때, 이전에 계산한 값을 메모리에 저장함으로써 동일한 계산의 반복 수행을 제거하여 프로그램 실행 속도를 빠르게 하는 기술이다. 동적 계획법의 핵심이 되는 기술이다. - 위키백과 -</p>
+</blockquote>
+
+<p><br /></p>
+
+<h1 id="usememo">useMemo</h1>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">memoizedValue</span> <span class="o">=</span> <span class="nx">useMemo</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">computeExpensiveValue</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">),</span> <span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">]);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<ul>
+  <li>
+    <p>함수가 실행된 반환값을 메모이제이션 하고 그 값을 반환한다. 만약 의존성배열 ( [ a, b ] )값이 변경되면 새로운 반환값을 메모이제이션 한 후 반환한다.</p>
+  </li>
+  <li>
+    <p>주로 계산량이 많아 비용을 높을 떄 사용한다.</p>
+  </li>
+  <li>
+    <p>useMemo에 전달된 함수는 렌더링중에 실행되기 떄문에 렌더링 중에 동작하지 않는 함수를 넣어서는 안된다.</p>
+  </li>
+  <li>
+    <p>의존성배열이 없다면 렌더링될 떄마다 실행된다.</p>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h1 id="usecallback">useCallback</h1>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">memoizedCallback</span> <span class="o">=</span> <span class="nx">useCallback</span><span class="p">(</span>
+  <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">doSomething</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">],</span>
+<span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<ul>
+  <li>메모이제이션된 함수를 반환한다.</li>
+  <li>의존성배열값이 변경되면 함수를 재 생성한다. 즉, 함수를 재생성한다.</li>
+  <li>함수 인스턴스를 지속적으로 유지해야 하는 경우에 사용한다.</li>
+  <li>의존성 값의 배열이 콜백 인자로 전달되지는 않는다. 따라서 콜백안에서 참조되는 모든 값은 의존성배열에 나타나야한다.</li>
+  <li>useCallback(fn, deps)은 useMemo(() =&gt; fn, deps)와 같다.</li>
+</ul>
+
+<p><br /></p>
+
+<h1 id="공통적인-주의사항">공통적인 주의사항</h1>
+<ul>
+  <li>어플의 근본적인 문제를 해결하기 위해 useMemo나 useCallback을 사용하면 안 되며 이는 docs에도 명시되어 있다.(최적화를 위해 사용해할 수 있을 뿐이다.)</li>
+  <li>이들도 일정 코스트가 있기때문에 분별없이 남발하여 사용할 경우 오히려 성능 악화를 발생시킬 수 있다.</li>
+  <li>의존성 배열에 들어가는 값이 너무 많을 경우 사용하지 않는 것이 좋다.</li>
+</ul>
+
+<p><br /></p>
+
+<h1 id="reactmemo">React.memo</h1>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">MyComponent</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+  <span class="cm">/* props를 사용하여 렌더링 */</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">areEqual</span><span class="p">(</span><span class="nx">prevProps</span><span class="p">,</span> <span class="nx">nextProps</span><span class="p">)</span> <span class="p">{</span>
+  <span class="cm">/*
+  nextProps가 prevProps와 동일한 값을 가지면 true를 반환하고, 그렇지 않다면 false를 반환
+  */</span>
+<span class="p">}</span>
+<span class="k">export</span> <span class="k">default</span> <span class="nx">React</span><span class="p">.</span><span class="nx">memo</span><span class="p">(</span><span class="nx">MyComponent</span><span class="p">,</span> <span class="nx">areEqual</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<ul>
+  <li>HOC(Higher Order Component)이다.</li>
+  <li>렌더링 결과를 memo에 메모이제이션 한 후, 렌더링 시 동일한 결과를 렌더링 할 경우 이를 재사용한다.</li>
+</ul>
+
+<h2 id="주의사항">주의사항</h2>
+<ul>
+  <li>porps 변화에만 영향을 준다. 때문에 state, context가 변한다면 다시 렌더링 된다.</li>
+  <li>이는 성능 최적화를 위해 사용해야하며 렌더링 방지시 사용할 경우 버그를 유발할 수 있다.</li>
+  <li>메모이제이션 작업시간이 필요하기 때문에 메모이제이션 이후 자주 사용되지 않는 컴포넌트라면 오히려 성능이 낮아질 수 있다.</li>
+</ul>
+
+<p><br /></p>]]></content><author><name>Dalaran</name></author><category term="react" /><category term="react" /><category term="useMemo" /><category term="useCallback" /><category term="React.memo" /><summary type="html"><![CDATA[useMemo, useCallback, React.memo의 개념과 주의사항을 알아보자.]]></summary></entry><entry><title type="html">React-Native installation</title><link href="http://localhost:4000/react-native/react-native-intallation/" rel="alternate" type="text/html" title="React-Native installation" /><published>2022-05-11T00:00:00+09:00</published><updated>2022-05-11T00:00:00+09:00</updated><id>http://localhost:4000/react-native/react%20native%20intallation</id><content type="html" xml:base="http://localhost:4000/react-native/react-native-intallation/"><![CDATA[<h1 id="react-native">React-Native</h1>
 <blockquote>
   <p>React Native는 React 와 앱 플랫폼의 기본 기능을 사용하여 Android 및 iOS 애플리케이션을 빌드하기 위한 오픈 소스 프레임워크입니다 . React Native를 사용하면 JavaScript를 사용하여 플랫폼의 API에 액세스할 수 있을 뿐만 아니라 React 구성 요소를 사용하여 UI의 모양과 동작을 설명할 수 있습니다. 재사용 가능하고 중첩 가능한 코드 번들입니다. -React Native-</p>
 </blockquote>
@@ -284,7 +813,112 @@ react-native init --version (version) (프로젝트 명)
       <dd>Refresh를 자동으로 해준다.</dd>
     </dl>
   </li>
-</ul>]]></content><author><name>Dalaran</name></author><category term="react-native" /><category term="react-native" /><summary type="html"><![CDATA[React-Native cli를 설치하고 android studio, Xcode와 연동해보자.]]></summary></entry><entry><title type="html">Class와 Function</title><link href="http://localhost:4000/react/class-and-function/" rel="alternate" type="text/html" title="Class와 Function" /><published>2022-05-05T00:00:00+09:00</published><updated>2022-05-05T00:00:00+09:00</updated><id>http://localhost:4000/react/class%20and%20function</id><content type="html" xml:base="http://localhost:4000/react/class-and-function/"><![CDATA[<p>React에 관한 코드를 검색을 하면 나오는 글들 중 서로다른 형태의 코드를 본적이 있을것이다. 바로 Class를 사용한 방법과 function을 사용한 방법의 형태이다. 과거에는 함수형보다 클래스형 으로 코드를 많이 구현했지만 오늘날에는 점점 함수형으로 변하는 추세에 있다. 두 방식의 차이점에는 어떤 것이 있으며 왜 함수형으로 변화하게 되었는지 이번글에 포스팅하려 한다.</p>
+</ul>]]></content><author><name>Dalaran</name></author><category term="react-native" /><category term="react-native" /><summary type="html"><![CDATA[React-Native cli를 설치하고 android studio, Xcode와 연동해보자.]]></summary></entry><entry><title type="html">상태관리 라이브러리의 장단점 정리</title><link href="http://localhost:4000/react/redux-mobx-context/" rel="alternate" type="text/html" title="상태관리 라이브러리의 장단점 정리" /><published>2022-05-05T00:00:00+09:00</published><updated>2022-05-05T00:00:00+09:00</updated><id>http://localhost:4000/react/redux%20mobx%20context</id><content type="html" xml:base="http://localhost:4000/react/redux-mobx-context/"><![CDATA[<p>React로 개발을 하다보면 props를 많이 사용하게 된다. 하지만 이 과정에서 구조상 props가 너무 깊게 내려간다거나 같은 하나의 데이터를 여러 컴포넌트에서 공통적으로 사용해야 하는 경우가 발생한다. 이 경우 상태 관리를 이용하여 이를 해결할 수 있는데, 상황에 따라 혹은 선호도에 따라 선택할 수 있는 라이브러리가 많다. 이번 포스팅에서는 상태관리 툴에 약간의 장단점과 내 생각을 정리해 보려 한다. (본인은 context만 사용해 보았다.)</p>
+
+<p><br /></p>
+
+<h1 id="redux">Redux</h1>
+<p>상태관리를 위해 사용하는 JavaScript 라이브러리 이다. Flux 아키텍쳐를 따르며 단방향 데이터 흐름 모델을 통해 상태를 관리를하여 확장성을 늘려준다.</p>
+
+<h2 id="장점">장점</h2>
+<h3 id="1-상태-예측이-가능하다">1. 상태 예측이 가능하다.</h3>
+<p>동일한 상태와 액션이 리듀서에 전달되면 리듀서는 순수 함수이기 때문에 항상 동일한 결과가 생성된다. 또한 이전 상태 사이를 앞뒤로 이동하고 결과를 실시간으로 볼 수 있습니다.</p>
+
+<h3 id="2-유지-보수가-용이하다">2. 유지 보수가 용이하다.</h3>
+<p>코드를 구성하는 방법에 대해 엄격하므로 Redux에 대한 지식이 있는 사람이 Redux 애플리케이션의 구조를 더 쉽게 이해할 수 있다.</p>
+
+<h3 id="3-디버깅이-쉽다">3. 디버깅이 쉽다.</h3>
+<p>어떤 액선이 일어나고 데이터가 어떻게 변화했는지 로그가 남는다. 또한 개발자는 이전의 특정 상태로 돌아가볼 수 있다. 때문에 시간 여행이 가능해지며 버그가 나기 이전 상태로 돌아가서 테스트해볼 수 있다.</p>
+
+<h3 id="4-한-곳에서-관리">4. 한 곳에서 관리</h3>
+<p>store를 이용하여 상태를 한 곳에서 관리한다. 전역상태를 관리할 때 효율적이다.</p>
+
+<h2 id="단점">단점</h2>
+<h3 id="1-코드의-증량">1. 코드의 증량</h3>
+<p>리덕스로 코드를 구현하는 순간 필수적으로 만들어야하는 파일이 있다. 때문에 코드량이 그만큼 증가하게 된다.</p>
+
+<h3 id="2-읽기-전용">2. 읽기 전용</h3>
+<p>리덕스는 상태를 읽기 전용으로 취급하지만 읽기 전용으로 만들어주지는 않는다. 때문에 항상 직접 수정하지 않게 하기위해 주의해야 한다.</p>
+
+<h3 id="3-컴포넌트와의-연결성">3. 컴포넌트와의 연결성</h3>
+<p>store와 component를 연결하기 위해 mapStateToProps, mapDispatchToProps 와 같은 메서드가 필요하다. (코드량이 증가한다.)</p>
+
+<p><br /></p>
+
+<h1 id="mobx">Mobx</h1>
+
+<blockquote>
+  <p>MobX는 functional reactive programming을 투명하게 적용함으로써 상태 관리를 쉽고 확장성 있게 만들어주는 검증된 라이브러리입니다. -Mobx-</p>
+</blockquote>
+
+<h2 id="장점-1">장점</h2>
+<h3 id="1-객체지향적">1. 객체지향적</h3>
+<p>mobx는 객체지향적으로 class를 사용할 것을 권장한다.</p>
+
+<h3 id="2-데코레이터">2. 데코레이터</h3>
+<p>데코레이터를 제공하기 때문에 좀더 깔끔하게 구성이 가능하다.</p>
+
+<h3 id="3-캡슐화">3. 캡슐화</h3>
+<p>state의 변경을 오직 메서드를 통해서만 변경할 수 있게 설정이 가능하다. (privite)</p>
+
+<h2 id="단점-1">단점</h2>
+<h3 id="1-디버깅이-불편하다">1. 디버깅이 불편하다</h3>
+<p>리덕스와 같은 툴이 마땅히 없기에 디버깅을 위해서 console.log를 이용해야 한다.</p>
+
+<h3 id="2-데코레이터-1">2. 데코레이터</h3>
+<p>개인적으로 데코레이터는 장점이자 단점같다. Class 형으로 컴포넌트를 구성했다면 데코레이터는 장점이 될 수 있지만 함수형으로 구성했다면 단점이라 생각한다. 함수형에서 데코레이터를 사용하기 위해서는 useContext hook을 이용해야하며 컴포넌트에 연결하기 위해 hoc로 랩핑해야 한다.</p>
+
+<h3 id="3-레퍼런스">3. 레퍼런스</h3>
+<p>레퍼런스 코드가 부족하다. 특히 함수형의 경우 정말 찾아보기 힘들다.</p>
+
+<p><br /></p>
+
+<h1 id="context-api">Context api</h1>
+<h2 id="장점-2">장점</h2>
+<h3 id="1-접근성">1. 접근성</h3>
+<p>react에서 제공하는 기술이기에 추가 설치가 필요없다.</p>
+
+<h3 id="2-러닝-커브">2. 러닝 커브</h3>
+<p>Mobx와 Redux에 비해 러닝커브가 낮다.</p>
+
+<h3 id="3-간결성">3. 간결성</h3>
+<p>사용하기위한 코드 구성이 가장 간결하다.</p>
+
+<h2 id="단점-2">단점</h2>
+<h3 id="rendering">rendering</h3>
+<p>context의 provider는 value값이 변할 경우 해당 값을 사용하는 컴포넌트 또한 리렌더링이 된다. 만약 컨택스트를 상태값과 액션값으로 나누어 사용하면 이 문제는 해결이 가능하다. 하지만 그에따른 보일러 플레이트코드가 증가하며 복잡해질 수록 provider가 늘어나 지옥이 될 수 있다.</p>
+
+<p><br /></p>
+
+<h1 id="recoil">Recoil</h1>
+<p>fecebook에서 만든 상태관리 라이브러리이다. 기존 context의 렌더링 문제, 단일값만 저장 가능한 문제(consumer를 가지는 여러 값의 집합을 저장 못하는 문제), 코드 분활의 어려움을 해결하고자 만든 라이브러리이다.</p>
+
+<h2 id="장점-3">장점</h2>
+<h3 id="1-간단한-인터페이스로">1. 간단한 인터페이스로</h3>
+<p>get/set으로 사용할 수 있도록 boilerplate-free API를 제공</p>
+
+<h3 id="2-증분-및-분산">2. 증분 및 분산</h3>
+<p>코드 분할이 가능해진다.</p>
+
+<h3 id="3-컴포넌트-비수정">3. 컴포넌트 비수정</h3>
+<p>컴포넌트를 수정하지 않고 상태 데이터로 대체 가능하며 파생된 데이터를 사용시 동기식과 비동기식 간에 이동이 가능하다.</p>
+
+<h2 id="단점-3">단점</h2>
+<h3 id="1-호환성">1. 호환성</h3>
+<blockquote>
+  <p>Recoil 빌드는 ES5로 트랜스파일 되지 않으므로, Recoil을 ES5와 사용하는 것은 지원하지 않는다. -Recoil-</p>
+</blockquote>
+
+<p>ES5에서도 사용할 수 있는 방법은 있으니 버그가 발생할 수 있다 명시되어 있다.</p>
+
+<h3 id="2-레퍼런스">2. 레퍼런스</h3>
+<p>나온지 얼마 안된만큼 레퍼런스가 부족하다.</p>
+
+<h2 id="공통적인-단점">공통적인 단점</h2>
+<p>컴포넌트의 재사용성을 해칠 수 있다.</p>
+
+<h1 id="맺음말">맺음말</h1>
+<p>이상으로 각 상태관리 라이브러리에 대하여 간략히 알아보았다. 사실 사용해본 기능이 context뿐인 만큼 각자의 개념만 살짝 맛봤을 뿐 어떤것이 더 좋은지 경험에서 판단하기는 불가능 한것같다. 하지만 개인적으로 규모가 작거나 전역관리 하나만 필요할떄는 context만으로도 충분할 것 같으며 recoil의 등장으로 조금씩 선호도가 변할 수도 있을 것 같다는 생각이 들었다. 또한 전역관리는 중요하지만 남발할 경우 재사용성을 해할 수 있다는 공통적인 단점이 있기에 항상 사용에 주의해야 할 것같다.</p>]]></content><author><name>Dalaran</name></author><category term="react" /><category term="react" /><category term="redux" /><category term="mobx" /><category term="context" /><category term="recoil" /><summary type="html"><![CDATA[상태관리 라이브러리는 여러가지가 있다. 각 라이브러리의 장단점을 알아보자.]]></summary></entry><entry><title type="html">Class와 Function</title><link href="http://localhost:4000/react/class-and-function/" rel="alternate" type="text/html" title="Class와 Function" /><published>2022-05-05T00:00:00+09:00</published><updated>2022-05-05T00:00:00+09:00</updated><id>http://localhost:4000/react/class%20and%20function</id><content type="html" xml:base="http://localhost:4000/react/class-and-function/"><![CDATA[<p>React에 관한 코드를 검색을 하면 나오는 글들 중 서로다른 형태의 코드를 본적이 있을것이다. 바로 Class를 사용한 방법과 function을 사용한 방법의 형태이다. 과거에는 함수형보다 클래스형 으로 코드를 많이 구현했지만 오늘날에는 점점 함수형으로 변하는 추세에 있다. 두 방식의 차이점에는 어떤 것이 있으며 왜 함수형으로 변화하게 되었는지 이번글에 포스팅하려 한다.</p>
 
 <p><br /></p>
 
@@ -505,112 +1139,7 @@ react-native init --version (version) (프로젝트 명)
 <p><br /></p>
 
 <h1 id="마무리">마무리</h1>
-<p>위에 정리한 것 처럼 클래스형과 함수형은 여러 차이점이 있다. 여기서 차이점의 공통점을 보자면 함수형에서는 Hook을 사용하지 않으면 class와 같이 사용하기가 힘든 경우가 있다는 것이다(state, life cycle). React의 Hooks는 처음부터 있던 것이 아니다. 때문에 Hooks가 제공되지 않을 때는 함수형으로 구현할 수 없던 것들이 Hooks이 제공됨으로서 구현 가능하게 되었다. React에서 Hook사용을 권장하기도 하지만 복잡하게 구현되는 Class를 보다 쉽고 깔끔하게 구현하기 좋은 함수형이 유지보수 측면에서도 메리트가 있기에 요즘 더 선호되는 것이 아닌가라는 생각이 든다.</p>]]></content><author><name>Dalaran</name></author><category term="react" /><category term="react" /><category term="class" /><category term="function" /><summary type="html"><![CDATA[Class와 Function의 차이점을 알아보고 클래스형에서 함수형으로 변화하게된 이유를 살펴보자.]]></summary></entry><entry><title type="html">상태관리 라이브러리의 장단점 정리</title><link href="http://localhost:4000/react/redux-mobx-context/" rel="alternate" type="text/html" title="상태관리 라이브러리의 장단점 정리" /><published>2022-05-05T00:00:00+09:00</published><updated>2022-05-05T00:00:00+09:00</updated><id>http://localhost:4000/react/redux%20mobx%20context</id><content type="html" xml:base="http://localhost:4000/react/redux-mobx-context/"><![CDATA[<p>React로 개발을 하다보면 props를 많이 사용하게 된다. 하지만 이 과정에서 구조상 props가 너무 깊게 내려간다거나 같은 하나의 데이터를 여러 컴포넌트에서 공통적으로 사용해야 하는 경우가 발생한다. 이 경우 상태 관리를 이용하여 이를 해결할 수 있는데, 상황에 따라 혹은 선호도에 따라 선택할 수 있는 라이브러리가 많다. 이번 포스팅에서는 상태관리 툴에 약간의 장단점과 내 생각을 정리해 보려 한다. (본인은 context만 사용해 보았다.)</p>
-
-<p><br /></p>
-
-<h1 id="redux">Redux</h1>
-<p>상태관리를 위해 사용하는 JavaScript 라이브러리 이다. Flux 아키텍쳐를 따르며 단방향 데이터 흐름 모델을 통해 상태를 관리를하여 확장성을 늘려준다.</p>
-
-<h2 id="장점">장점</h2>
-<h3 id="1-상태-예측이-가능하다">1. 상태 예측이 가능하다.</h3>
-<p>동일한 상태와 액션이 리듀서에 전달되면 리듀서는 순수 함수이기 때문에 항상 동일한 결과가 생성된다. 또한 이전 상태 사이를 앞뒤로 이동하고 결과를 실시간으로 볼 수 있습니다.</p>
-
-<h3 id="2-유지-보수가-용이하다">2. 유지 보수가 용이하다.</h3>
-<p>코드를 구성하는 방법에 대해 엄격하므로 Redux에 대한 지식이 있는 사람이 Redux 애플리케이션의 구조를 더 쉽게 이해할 수 있다.</p>
-
-<h3 id="3-디버깅이-쉽다">3. 디버깅이 쉽다.</h3>
-<p>어떤 액선이 일어나고 데이터가 어떻게 변화했는지 로그가 남는다. 또한 개발자는 이전의 특정 상태로 돌아가볼 수 있다. 때문에 시간 여행이 가능해지며 버그가 나기 이전 상태로 돌아가서 테스트해볼 수 있다.</p>
-
-<h3 id="4-한-곳에서-관리">4. 한 곳에서 관리</h3>
-<p>store를 이용하여 상태를 한 곳에서 관리한다. 전역상태를 관리할 때 효율적이다.</p>
-
-<h2 id="단점">단점</h2>
-<h3 id="1-코드의-증량">1. 코드의 증량</h3>
-<p>리덕스로 코드를 구현하는 순간 필수적으로 만들어야하는 파일이 있다. 때문에 코드량이 그만큼 증가하게 된다.</p>
-
-<h3 id="2-읽기-전용">2. 읽기 전용</h3>
-<p>리덕스는 상태를 읽기 전용으로 취급하지만 읽기 전용으로 만들어주지는 않는다. 때문에 항상 직접 수정하지 않게 하기위해 주의해야 한다.</p>
-
-<h3 id="3-컴포넌트와의-연결성">3. 컴포넌트와의 연결성</h3>
-<p>store와 component를 연결하기 위해 mapStateToProps, mapDispatchToProps 와 같은 메서드가 필요하다. (코드량이 증가한다.)</p>
-
-<p><br /></p>
-
-<h1 id="mobx">Mobx</h1>
-
-<blockquote>
-  <p>MobX는 functional reactive programming을 투명하게 적용함으로써 상태 관리를 쉽고 확장성 있게 만들어주는 검증된 라이브러리입니다. -Mobx-</p>
-</blockquote>
-
-<h2 id="장점-1">장점</h2>
-<h3 id="1-객체지향적">1. 객체지향적</h3>
-<p>mobx는 객체지향적으로 class를 사용할 것을 권장한다.</p>
-
-<h3 id="2-데코레이터">2. 데코레이터</h3>
-<p>데코레이터를 제공하기 때문에 좀더 깔끔하게 구성이 가능하다.</p>
-
-<h3 id="3-캡슐화">3. 캡슐화</h3>
-<p>state의 변경을 오직 메서드를 통해서만 변경할 수 있게 설정이 가능하다. (privite)</p>
-
-<h2 id="단점-1">단점</h2>
-<h3 id="1-디버깅이-불편하다">1. 디버깅이 불편하다</h3>
-<p>리덕스와 같은 툴이 마땅히 없기에 디버깅을 위해서 console.log를 이용해야 한다.</p>
-
-<h3 id="2-데코레이터-1">2. 데코레이터</h3>
-<p>개인적으로 데코레이터는 장점이자 단점같다. Class 형으로 컴포넌트를 구성했다면 데코레이터는 장점이 될 수 있지만 함수형으로 구성했다면 단점이라 생각한다. 함수형에서 데코레이터를 사용하기 위해서는 useContext hook을 이용해야하며 컴포넌트에 연결하기 위해 hoc로 랩핑해야 한다.</p>
-
-<h3 id="3-레퍼런스">3. 레퍼런스</h3>
-<p>레퍼런스 코드가 부족하다. 특히 함수형의 경우 정말 찾아보기 힘들다.</p>
-
-<p><br /></p>
-
-<h1 id="context-api">Context api</h1>
-<h2 id="장점-2">장점</h2>
-<h3 id="1-접근성">1. 접근성</h3>
-<p>react에서 제공하는 기술이기에 추가 설치가 필요없다.</p>
-
-<h3 id="2-러닝-커브">2. 러닝 커브</h3>
-<p>Mobx와 Redux에 비해 러닝커브가 낮다.</p>
-
-<h3 id="3-간결성">3. 간결성</h3>
-<p>사용하기위한 코드 구성이 가장 간결하다.</p>
-
-<h2 id="단점-2">단점</h2>
-<h3 id="rendering">rendering</h3>
-<p>context의 provider는 value값이 변할 경우 해당 값을 사용하는 컴포넌트 또한 리렌더링이 된다. 만약 컨택스트를 상태값과 액션값으로 나누어 사용하면 이 문제는 해결이 가능하다. 하지만 그에따른 보일러 플레이트코드가 증가하며 복잡해질 수록 provider가 늘어나 지옥이 될 수 있다.</p>
-
-<p><br /></p>
-
-<h1 id="recoil">Recoil</h1>
-<p>fecebook에서 만든 상태관리 라이브러리이다. 기존 context의 렌더링 문제, 단일값만 저장 가능한 문제(consumer를 가지는 여러 값의 집합을 저장 못하는 문제), 코드 분활의 어려움을 해결하고자 만든 라이브러리이다.</p>
-
-<h2 id="장점-3">장점</h2>
-<h3 id="1-간단한-인터페이스로">1. 간단한 인터페이스로</h3>
-<p>get/set으로 사용할 수 있도록 boilerplate-free API를 제공</p>
-
-<h3 id="2-증분-및-분산">2. 증분 및 분산</h3>
-<p>코드 분할이 가능해진다.</p>
-
-<h3 id="3-컴포넌트-비수정">3. 컴포넌트 비수정</h3>
-<p>컴포넌트를 수정하지 않고 상태 데이터로 대체 가능하며 파생된 데이터를 사용시 동기식과 비동기식 간에 이동이 가능하다.</p>
-
-<h2 id="단점-3">단점</h2>
-<h3 id="1-호환성">1. 호환성</h3>
-<blockquote>
-  <p>Recoil 빌드는 ES5로 트랜스파일 되지 않으므로, Recoil을 ES5와 사용하는 것은 지원하지 않는다. -Recoil-</p>
-</blockquote>
-
-<p>ES5에서도 사용할 수 있는 방법은 있으니 버그가 발생할 수 있다 명시되어 있다.</p>
-
-<h3 id="2-레퍼런스">2. 레퍼런스</h3>
-<p>나온지 얼마 안된만큼 레퍼런스가 부족하다.</p>
-
-<h2 id="공통적인-단점">공통적인 단점</h2>
-<p>컴포넌트의 재사용성을 해칠 수 있다.</p>
-
-<h1 id="맺음말">맺음말</h1>
-<p>이상으로 각 상태관리 라이브러리에 대하여 간략히 알아보았다. 사실 사용해본 기능이 context뿐인 만큼 각자의 개념만 살짝 맛봤을 뿐 어떤것이 더 좋은지 경험에서 판단하기는 불가능 한것같다. 하지만 개인적으로 규모가 작거나 전역관리 하나만 필요할떄는 context만으로도 충분할 것 같으며 recoil의 등장으로 조금씩 선호도가 변할 수도 있을 것 같다는 생각이 들었다. 또한 전역관리는 중요하지만 남발할 경우 재사용성을 해할 수 있다는 공통적인 단점이 있기에 항상 사용에 주의해야 할 것같다.</p>]]></content><author><name>Dalaran</name></author><category term="react" /><category term="react" /><category term="redux" /><category term="mobx" /><category term="context" /><category term="recoil" /><summary type="html"><![CDATA[상태관리 라이브러리는 여러가지가 있다. 각 라이브러리의 장단점을 알아보자.]]></summary></entry><entry><title type="html">객체 지향 프로그래밍</title><link href="http://localhost:4000/javascript/oop/" rel="alternate" type="text/html" title="객체 지향 프로그래밍" /><published>2022-05-04T00:00:00+09:00</published><updated>2022-05-04T00:00:00+09:00</updated><id>http://localhost:4000/javascript/oop</id><content type="html" xml:base="http://localhost:4000/javascript/oop/"><![CDATA[<p>  흔히 JavaScript에 대해 설명하라 하면 자주 등장하는 단어가 객체 지향 언어이다. 이외에도 프로그래밍을 하다보면 객체 지향 프로그래밍이라는 단어를 종종 듣게된다. 이번 포스팅에서는 객체 지향 프로그래밍이 무엇인지, JavaScript가 왜 객체지향 언어라 할 수 있는지에 대해 정리해 보려한다.</p>
+<p>위에 정리한 것 처럼 클래스형과 함수형은 여러 차이점이 있다. 여기서 차이점의 공통점을 보자면 함수형에서는 Hook을 사용하지 않으면 class와 같이 사용하기가 힘든 경우가 있다는 것이다(state, life cycle). React의 Hooks는 처음부터 있던 것이 아니다. 때문에 Hooks가 제공되지 않을 때는 함수형으로 구현할 수 없던 것들이 Hooks이 제공됨으로서 구현 가능하게 되었다. React에서 Hook사용을 권장하기도 하지만 복잡하게 구현되는 Class를 보다 쉽고 깔끔하게 구현하기 좋은 함수형이 유지보수 측면에서도 메리트가 있기에 요즘 더 선호되는 것이 아닌가라는 생각이 든다.</p>]]></content><author><name>Dalaran</name></author><category term="react" /><category term="react" /><category term="class" /><category term="function" /><summary type="html"><![CDATA[Class와 Function의 차이점을 알아보고 클래스형에서 함수형으로 변화하게된 이유를 살펴보자.]]></summary></entry><entry><title type="html">객체 지향 프로그래밍</title><link href="http://localhost:4000/javascript/oop/" rel="alternate" type="text/html" title="객체 지향 프로그래밍" /><published>2022-05-04T00:00:00+09:00</published><updated>2022-05-04T00:00:00+09:00</updated><id>http://localhost:4000/javascript/oop</id><content type="html" xml:base="http://localhost:4000/javascript/oop/"><![CDATA[<p>  흔히 JavaScript에 대해 설명하라 하면 자주 등장하는 단어가 객체 지향 언어이다. 이외에도 프로그래밍을 하다보면 객체 지향 프로그래밍이라는 단어를 종종 듣게된다. 이번 포스팅에서는 객체 지향 프로그래밍이 무엇인지, JavaScript가 왜 객체지향 언어라 할 수 있는지에 대해 정리해 보려한다.</p>
 
 <p><br /></p>
 

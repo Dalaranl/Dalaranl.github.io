@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>상태관리 라이브러리의 장단점 정리 | Log Archive</title>
-<meta name="description" content="상태관리 라이브러리는 여러가지가 있다. 각 라이브러리의 장단점을 알아보자.">
+<!-- begin _includes/seo.html --><title>useMemo, useCallback, React.memo | Log Archive</title>
+<meta name="description" content="useMemo, useCallback, React.memo의 개념과 주의사항을 알아보자.">
 
 
   <meta name="author" content="Dalaran">
@@ -22,11 +22,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="Log Archive">
-<meta property="og:title" content="상태관리 라이브러리의 장단점 정리">
-<meta property="og:url" content="http://localhost:4000/react/redux-mobx-context/">
+<meta property="og:title" content="useMemo, useCallback, React.memo">
+<meta property="og:url" content="http://localhost:4000/react/useMemo,-useCallback,-React.memo/">
 
 
-  <meta property="og:description" content="상태관리 라이브러리는 여러가지가 있다. 각 라이브러리의 장단점을 알아보자.">
+  <meta property="og:description" content="useMemo, useCallback, React.memo의 개념과 주의사항을 알아보자.">
 
 
 
@@ -36,7 +36,7 @@
 
 
 
-  <meta property="article:published_time" content="2022-05-05T00:00:00+09:00">
+  <meta property="article:published_time" content="2022-05-13T00:00:00+09:00">
 
 
 
@@ -47,7 +47,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/react/redux-mobx-context/">
+<link rel="canonical" href="http://localhost:4000/react/useMemo,-useCallback,-React.memo/">
 
 
 
@@ -183,7 +183,7 @@
     
       
       
-        <li class="current">상태관리 라이브러리의 장단점 정리</li>
+        <li class="current">useMemo, useCallback, React.memo</li>
       
     
   </ol>
@@ -380,16 +380,16 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="상태관리 라이브러리의 장단점 정리">
-    <meta itemprop="description" content="상태관리 라이브러리는 여러가지가 있다. 각 라이브러리의 장단점을 알아보자.">
-    <meta itemprop="datePublished" content="2022-05-05T00:00:00+09:00">
+    <meta itemprop="headline" content="useMemo, useCallback, React.memo">
+    <meta itemprop="description" content="useMemo, useCallback, React.memo의 개념과 주의사항을 알아보자.">
+    <meta itemprop="datePublished" content="2022-05-13T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/react/redux-mobx-context/" class="u-url" itemprop="url">상태관리 라이브러리의 장단점 정리
+            <a href="http://localhost:4000/react/useMemo,-useCallback,-React.memo/" class="u-url" itemprop="url">useMemo, useCallback, React.memo
 </a>
           </h1>
           
@@ -400,7 +400,7 @@
       <span class="page__meta-date">
         <i class="far fa-calendar-alt" aria-hidden="true"></i>
         
-        <time datetime="2022-05-05T00:00:00+09:00">2022-05-05</time>
+        <time datetime="2022-05-13T00:00:00+09:00">2022-05-13</time>
       </span>
     
 
@@ -413,7 +413,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          2 분 소요
+          1 분 소요
         
       </span>
     
@@ -428,117 +428,111 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#redux">Redux</a><ul><li><a href="#장점">장점</a><ul><li><a href="#1-상태-예측이-가능하다">1. 상태 예측이 가능하다.</a></li><li><a href="#2-유지-보수가-용이하다">2. 유지 보수가 용이하다.</a></li><li><a href="#3-디버깅이-쉽다">3. 디버깅이 쉽다.</a></li><li><a href="#4-한-곳에서-관리">4. 한 곳에서 관리</a></li></ul></li><li><a href="#단점">단점</a><ul><li><a href="#1-코드의-증량">1. 코드의 증량</a></li><li><a href="#2-읽기-전용">2. 읽기 전용</a></li><li><a href="#3-컴포넌트와의-연결성">3. 컴포넌트와의 연결성</a></li></ul></li></ul></li><li><a href="#mobx">Mobx</a><ul><li><a href="#장점-1">장점</a><ul><li><a href="#1-객체지향적">1. 객체지향적</a></li><li><a href="#2-데코레이터">2. 데코레이터</a></li><li><a href="#3-캡슐화">3. 캡슐화</a></li></ul></li><li><a href="#단점-1">단점</a><ul><li><a href="#1-디버깅이-불편하다">1. 디버깅이 불편하다</a></li><li><a href="#2-데코레이터-1">2. 데코레이터</a></li><li><a href="#3-레퍼런스">3. 레퍼런스</a></li></ul></li></ul></li><li><a href="#context-api">Context api</a><ul><li><a href="#장점-2">장점</a><ul><li><a href="#1-접근성">1. 접근성</a></li><li><a href="#2-러닝-커브">2. 러닝 커브</a></li><li><a href="#3-간결성">3. 간결성</a></li></ul></li><li><a href="#단점-2">단점</a><ul><li><a href="#rendering">rendering</a></li></ul></li></ul></li><li><a href="#recoil">Recoil</a><ul><li><a href="#장점-3">장점</a><ul><li><a href="#1-간단한-인터페이스로">1. 간단한 인터페이스로</a></li><li><a href="#2-증분-및-분산">2. 증분 및 분산</a></li><li><a href="#3-컴포넌트-비수정">3. 컴포넌트 비수정</a></li></ul></li><li><a href="#단점-3">단점</a><ul><li><a href="#1-호환성">1. 호환성</a></li><li><a href="#2-레퍼런스">2. 레퍼런스</a></li></ul></li><li><a href="#공통적인-단점">공통적인 단점</a></li></ul></li><li><a href="#맺음말">맺음말</a></li></ul>
+              <ul class="toc__menu"><li><a href="#memoization">Memoization</a></li><li><a href="#usememo">useMemo</a></li><li><a href="#usecallback">useCallback</a></li><li><a href="#공통적인-주의사항">공통적인 주의사항</a></li><li><a href="#reactmemo">React.memo</a><ul><li><a href="#주의사항">주의사항</a></li></ul></li></ul>
 
             </nav>
           </aside>
         
-        <p>React로 개발을 하다보면 props를 많이 사용하게 된다. 하지만 이 과정에서 구조상 props가 너무 깊게 내려간다거나 같은 하나의 데이터를 여러 컴포넌트에서 공통적으로 사용해야 하는 경우가 발생한다. 이 경우 상태 관리를 이용하여 이를 해결할 수 있는데, 상황에 따라 혹은 선호도에 따라 선택할 수 있는 라이브러리가 많다. 이번 포스팅에서는 상태관리 툴에 약간의 장단점과 내 생각을 정리해 보려 한다. (본인은 context만 사용해 보았다.)</p>
+        <p>React는 state, props의 값이 바뀌거나 부모 컴포넌트가 렌더링 됐을 떄 렌더링이 발생하는 특성이 있다. 때문에 상위 컴포넌트가 렌더링 됐을 때 하위 컴포넌트도 같이 렌더링이 되는 경우가 많다. 이러한 문제를 최적화 하기위해 제공하는 기능(hooks)인 useMemo, useCallback, React.memo에 대해 알아보도록 하자. (모든 에제코드는 react doc에 있는 예제이다.)</p>
 
-<p><br /></p>
-
-<h1 id="redux">Redux</h1>
-<p>상태관리를 위해 사용하는 JavaScript 라이브러리 이다. Flux 아키텍쳐를 따르며 단방향 데이터 흐름 모델을 통해 상태를 관리를하여 확장성을 늘려준다.</p>
-
-<h2 id="장점">장점</h2>
-<h3 id="1-상태-예측이-가능하다">1. 상태 예측이 가능하다.</h3>
-<p>동일한 상태와 액션이 리듀서에 전달되면 리듀서는 순수 함수이기 때문에 항상 동일한 결과가 생성된다. 또한 이전 상태 사이를 앞뒤로 이동하고 결과를 실시간으로 볼 수 있습니다.</p>
-
-<h3 id="2-유지-보수가-용이하다">2. 유지 보수가 용이하다.</h3>
-<p>코드를 구성하는 방법에 대해 엄격하므로 Redux에 대한 지식이 있는 사람이 Redux 애플리케이션의 구조를 더 쉽게 이해할 수 있다.</p>
-
-<h3 id="3-디버깅이-쉽다">3. 디버깅이 쉽다.</h3>
-<p>어떤 액선이 일어나고 데이터가 어떻게 변화했는지 로그가 남는다. 또한 개발자는 이전의 특정 상태로 돌아가볼 수 있다. 때문에 시간 여행이 가능해지며 버그가 나기 이전 상태로 돌아가서 테스트해볼 수 있다.</p>
-
-<h3 id="4-한-곳에서-관리">4. 한 곳에서 관리</h3>
-<p>store를 이용하여 상태를 한 곳에서 관리한다. 전역상태를 관리할 때 효율적이다.</p>
-
-<h2 id="단점">단점</h2>
-<h3 id="1-코드의-증량">1. 코드의 증량</h3>
-<p>리덕스로 코드를 구현하는 순간 필수적으로 만들어야하는 파일이 있다. 때문에 코드량이 그만큼 증가하게 된다.</p>
-
-<h3 id="2-읽기-전용">2. 읽기 전용</h3>
-<p>리덕스는 상태를 읽기 전용으로 취급하지만 읽기 전용으로 만들어주지는 않는다. 때문에 항상 직접 수정하지 않게 하기위해 주의해야 한다.</p>
-
-<h3 id="3-컴포넌트와의-연결성">3. 컴포넌트와의 연결성</h3>
-<p>store와 component를 연결하기 위해 mapStateToProps, mapDispatchToProps 와 같은 메서드가 필요하다. (코드량이 증가한다.)</p>
-
-<p><br /></p>
-
-<h1 id="mobx">Mobx</h1>
-
+<h1 id="memoization">Memoization</h1>
 <blockquote>
-  <p>MobX는 functional reactive programming을 투명하게 적용함으로써 상태 관리를 쉽고 확장성 있게 만들어주는 검증된 라이브러리입니다. -Mobx-</p>
+  <p>메모이제이션(memoization)은 컴퓨터 프로그램이 동일한 계산을 반복해야 할 때, 이전에 계산한 값을 메모리에 저장함으로써 동일한 계산의 반복 수행을 제거하여 프로그램 실행 속도를 빠르게 하는 기술이다. 동적 계획법의 핵심이 되는 기술이다. - 위키백과 -</p>
 </blockquote>
 
-<h2 id="장점-1">장점</h2>
-<h3 id="1-객체지향적">1. 객체지향적</h3>
-<p>mobx는 객체지향적으로 class를 사용할 것을 권장한다.</p>
+<p><br /></p>
 
-<h3 id="2-데코레이터">2. 데코레이터</h3>
-<p>데코레이터를 제공하기 때문에 좀더 깔끔하게 구성이 가능하다.</p>
+<h1 id="usememo">useMemo</h1>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">memoizedValue</span> <span class="o">=</span> <span class="nx">useMemo</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">computeExpensiveValue</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">),</span> <span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">]);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<h3 id="3-캡슐화">3. 캡슐화</h3>
-<p>state의 변경을 오직 메서드를 통해서만 변경할 수 있게 설정이 가능하다. (privite)</p>
-
-<h2 id="단점-1">단점</h2>
-<h3 id="1-디버깅이-불편하다">1. 디버깅이 불편하다</h3>
-<p>리덕스와 같은 툴이 마땅히 없기에 디버깅을 위해서 console.log를 이용해야 한다.</p>
-
-<h3 id="2-데코레이터-1">2. 데코레이터</h3>
-<p>개인적으로 데코레이터는 장점이자 단점같다. Class 형으로 컴포넌트를 구성했다면 데코레이터는 장점이 될 수 있지만 함수형으로 구성했다면 단점이라 생각한다. 함수형에서 데코레이터를 사용하기 위해서는 useContext hook을 이용해야하며 컴포넌트에 연결하기 위해 hoc로 랩핑해야 한다.</p>
-
-<h3 id="3-레퍼런스">3. 레퍼런스</h3>
-<p>레퍼런스 코드가 부족하다. 특히 함수형의 경우 정말 찾아보기 힘들다.</p>
+<ul>
+  <li>
+    <p>함수가 실행된 반환값을 메모이제이션 하고 그 값을 반환한다. 만약 의존성배열 ( [ a, b ] )값이 변경되면 새로운 반환값을 메모이제이션 한 후 반환한다.</p>
+  </li>
+  <li>
+    <p>주로 계산량이 많아 비용을 높을 떄 사용한다.</p>
+  </li>
+  <li>
+    <p>useMemo에 전달된 함수는 렌더링중에 실행되기 떄문에 렌더링 중에 동작하지 않는 함수를 넣어서는 안된다.</p>
+  </li>
+  <li>
+    <p>의존성배열이 없다면 렌더링될 떄마다 실행된다.</p>
+  </li>
+</ul>
 
 <p><br /></p>
 
-<h1 id="context-api">Context api</h1>
-<h2 id="장점-2">장점</h2>
-<h3 id="1-접근성">1. 접근성</h3>
-<p>react에서 제공하는 기술이기에 추가 설치가 필요없다.</p>
+<h1 id="usecallback">useCallback</h1>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">memoizedCallback</span> <span class="o">=</span> <span class="nx">useCallback</span><span class="p">(</span>
+  <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">doSomething</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">],</span>
+<span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<h3 id="2-러닝-커브">2. 러닝 커브</h3>
-<p>Mobx와 Redux에 비해 러닝커브가 낮다.</p>
-
-<h3 id="3-간결성">3. 간결성</h3>
-<p>사용하기위한 코드 구성이 가장 간결하다.</p>
-
-<h2 id="단점-2">단점</h2>
-<h3 id="rendering">rendering</h3>
-<p>context의 provider는 value값이 변할 경우 해당 값을 사용하는 컴포넌트 또한 리렌더링이 된다. 만약 컨택스트를 상태값과 액션값으로 나누어 사용하면 이 문제는 해결이 가능하다. 하지만 그에따른 보일러 플레이트코드가 증가하며 복잡해질 수록 provider가 늘어나 지옥이 될 수 있다.</p>
+<ul>
+  <li>메모이제이션된 함수를 반환한다.</li>
+  <li>의존성배열값이 변경되면 함수를 재 생성한다. 즉, 함수를 재생성한다.</li>
+  <li>함수 인스턴스를 지속적으로 유지해야 하는 경우에 사용한다.</li>
+  <li>의존성 값의 배열이 콜백 인자로 전달되지는 않는다. 따라서 콜백안에서 참조되는 모든 값은 의존성배열에 나타나야한다.</li>
+  <li>useCallback(fn, deps)은 useMemo(() =&gt; fn, deps)와 같다.</li>
+</ul>
 
 <p><br /></p>
 
-<h1 id="recoil">Recoil</h1>
-<p>fecebook에서 만든 상태관리 라이브러리이다. 기존 context의 렌더링 문제, 단일값만 저장 가능한 문제(consumer를 가지는 여러 값의 집합을 저장 못하는 문제), 코드 분활의 어려움을 해결하고자 만든 라이브러리이다.</p>
+<h1 id="공통적인-주의사항">공통적인 주의사항</h1>
+<ul>
+  <li>어플의 근본적인 문제를 해결하기 위해 useMemo나 useCallback을 사용하면 안 되며 이는 docs에도 명시되어 있다.(최적화를 위해 사용해할 수 있을 뿐이다.)</li>
+  <li>이들도 일정 코스트가 있기때문에 분별없이 남발하여 사용할 경우 오히려 성능 악화를 발생시킬 수 있다.</li>
+  <li>의존성 배열에 들어가는 값이 너무 많을 경우 사용하지 않는 것이 좋다.</li>
+</ul>
 
-<h2 id="장점-3">장점</h2>
-<h3 id="1-간단한-인터페이스로">1. 간단한 인터페이스로</h3>
-<p>get/set으로 사용할 수 있도록 boilerplate-free API를 제공</p>
+<p><br /></p>
 
-<h3 id="2-증분-및-분산">2. 증분 및 분산</h3>
-<p>코드 분할이 가능해진다.</p>
+<h1 id="reactmemo">React.memo</h1>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">MyComponent</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+  <span class="cm">/* props를 사용하여 렌더링 */</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">areEqual</span><span class="p">(</span><span class="nx">prevProps</span><span class="p">,</span> <span class="nx">nextProps</span><span class="p">)</span> <span class="p">{</span>
+  <span class="cm">/*
+  nextProps가 prevProps와 동일한 값을 가지면 true를 반환하고, 그렇지 않다면 false를 반환
+  */</span>
+<span class="p">}</span>
+<span class="k">export</span> <span class="k">default</span> <span class="nx">React</span><span class="p">.</span><span class="nx">memo</span><span class="p">(</span><span class="nx">MyComponent</span><span class="p">,</span> <span class="nx">areEqual</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<h3 id="3-컴포넌트-비수정">3. 컴포넌트 비수정</h3>
-<p>컴포넌트를 수정하지 않고 상태 데이터로 대체 가능하며 파생된 데이터를 사용시 동기식과 비동기식 간에 이동이 가능하다.</p>
+<ul>
+  <li>HOC(Higher Order Component)이다.</li>
+  <li>렌더링 결과를 memo에 메모이제이션 한 후, 렌더링 시 동일한 결과를 렌더링 할 경우 이를 재사용한다.</li>
+</ul>
 
-<h2 id="단점-3">단점</h2>
-<h3 id="1-호환성">1. 호환성</h3>
-<blockquote>
-  <p>Recoil 빌드는 ES5로 트랜스파일 되지 않으므로, Recoil을 ES5와 사용하는 것은 지원하지 않는다. -Recoil-</p>
-</blockquote>
+<h2 id="주의사항">주의사항</h2>
+<ul>
+  <li>porps 변화에만 영향을 준다. 때문에 state, context가 변한다면 다시 렌더링 된다.</li>
+  <li>이는 성능 최적화를 위해 사용해야하며 렌더링 방지시 사용할 경우 버그를 유발할 수 있다.</li>
+  <li>메모이제이션 작업시간이 필요하기 때문에 메모이제이션 이후 자주 사용되지 않는 컴포넌트라면 오히려 성능이 낮아질 수 있다.</li>
+</ul>
 
-<p>ES5에서도 사용할 수 있는 방법은 있으니 버그가 발생할 수 있다 명시되어 있다.</p>
+<p><br /></p>
 
-<h3 id="2-레퍼런스">2. 레퍼런스</h3>
-<p>나온지 얼마 안된만큼 레퍼런스가 부족하다.</p>
-
-<h2 id="공통적인-단점">공통적인 단점</h2>
-<p>컴포넌트의 재사용성을 해칠 수 있다.</p>
-
-<h1 id="맺음말">맺음말</h1>
-<p>이상으로 각 상태관리 라이브러리에 대하여 간략히 알아보았다. 사실 사용해본 기능이 context뿐인 만큼 각자의 개념만 살짝 맛봤을 뿐 어떤것이 더 좋은지 경험에서 판단하기는 불가능 한것같다. 하지만 개인적으로 규모가 작거나 전역관리 하나만 필요할떄는 context만으로도 충분할 것 같으며 recoil의 등장으로 조금씩 선호도가 변할 수도 있을 것 같다는 생각이 들었다. 또한 전역관리는 중요하지만 남발할 경우 재사용성을 해할 수 있다는 공통적인 단점이 있기에 항상 사용에 주의해야 할 것같다.</p>
 
         
       </section>
@@ -555,15 +549,13 @@
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
     <span itemprop="keywords">
     
-      <a href="/tags/#context" class="page__taxonomy-item p-category" rel="tag">context</a><span class="sep">, </span>
-    
-      <a href="/tags/#mobx" class="page__taxonomy-item p-category" rel="tag">mobx</a><span class="sep">, </span>
-    
       <a href="/tags/#react" class="page__taxonomy-item p-category" rel="tag">react</a><span class="sep">, </span>
     
-      <a href="/tags/#recoil" class="page__taxonomy-item p-category" rel="tag">recoil</a><span class="sep">, </span>
+      <a href="/tags/#react-memo" class="page__taxonomy-item p-category" rel="tag">React.memo</a><span class="sep">, </span>
     
-      <a href="/tags/#redux" class="page__taxonomy-item p-category" rel="tag">redux</a>
+      <a href="/tags/#usecallback" class="page__taxonomy-item p-category" rel="tag">useCallback</a><span class="sep">, </span>
+    
+      <a href="/tags/#usememo" class="page__taxonomy-item p-category" rel="tag">useMemo</a>
     
     </span>
   </p>
@@ -588,7 +580,7 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-05-05T00:00:00+09:00">2022-05-05</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-05-13T00:00:00+09:00">2022-05-13</time></p>
 
       </footer>
 
@@ -597,22 +589,22 @@
     <h4 class="page__share-title">공유하기</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%EC%83%81%ED%83%9C%EA%B4%80%EB%A6%AC+%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%EC%9D%98+%EC%9E%A5%EB%8B%A8%EC%A0%90+%EC%A0%95%EB%A6%AC%20http%3A%2F%2Flocalhost%3A4000%2Freact%2Fredux-mobx-context%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=useMemo%2C+useCallback%2C+React.memo%20http%3A%2F%2Flocalhost%3A4000%2Freact%2FuseMemo%2C-useCallback%2C-React.memo%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Freact%2Fredux-mobx-context%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Freact%2FuseMemo%2C-useCallback%2C-React.memo%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Freact%2Fredux-mobx-context%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Freact%2FuseMemo%2C-useCallback%2C-React.memo%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/react/class-and-function/" class="pagination--pager" title="Class와 Function
+      <a href="/react-native/react-native-intallation/" class="pagination--pager" title="React-Native installation
 ">이전</a>
     
     
-      <a href="/react-native/react-native-intallation/" class="pagination--pager" title="React-Native installation
+      <a href="/javascript/var-hosting-TDZ/" class="pagination--pager" title="var로 알아보는 Hoisting, TDZ
 ">다음</a>
     
   </nav>
@@ -687,57 +679,6 @@
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
       <div class="archive__item-teaser">
-        <img src="/assets/thumbnail/react.png" alt="">
-      </div>
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/react/useMemo,-useCallback,-React.memo/" rel="permalink">useMemo, useCallback, React.memo
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2022-05-13T00:00:00+09:00">2022-05-13</time>
-      </span>
-    
-
-    <span class="page__meta-sep"></span>
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
-        
-          1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">useMemo, useCallback, React.memo의 개념과 주의사항을 알아보자.
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-      <div class="archive__item-teaser">
         <img src="" alt="">
       </div>
     
@@ -776,6 +717,57 @@
 
 
     <p class="archive__item-excerpt" itemprop="description">React-Native cli를 설치하고 android studio, Xcode와 연동해보자.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <img src="/assets/thumbnail/react.png" alt="">
+      </div>
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/react/redux-mobx-context/" rel="permalink">상태관리 라이브러리의 장단점 정리
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-05T00:00:00+09:00">2022-05-05</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">상태관리 라이브러리는 여러가지가 있다. 각 라이브러리의 장단점을 알아보자.
 </p>
   </article>
 </div>
