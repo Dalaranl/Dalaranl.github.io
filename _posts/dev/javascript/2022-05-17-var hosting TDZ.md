@@ -6,7 +6,7 @@ categories:
   - javascript
 tag: [JavaScript, var, hoisting, TDZ]
 header:
-    teaser: "/assets/thumbnail/javascript.png"
+    teaser: ""
 ---
 
 # Var
