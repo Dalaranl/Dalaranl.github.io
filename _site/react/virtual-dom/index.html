@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>상태관리 라이브러리의 장단점 정리 | Log Archive</title>
-<meta name="description" content="상태관리 라이브러리는 여러가지가 있다. 각 라이브러리의 장단점을 알아보자.">
+<!-- begin _includes/seo.html --><title>브라우저의 동작 과정과 Virtual Dom | Log Archive</title>
+<meta name="description" content="브라우저의 동작원리를 알아보고 가상 Dom이 무엇을 하는지 알아보자.">
 
 
   <meta name="author" content="Dalaran">
@@ -22,11 +22,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="Log Archive">
-<meta property="og:title" content="상태관리 라이브러리의 장단점 정리">
-<meta property="og:url" content="http://localhost:4000/react/redux-mobx-context/">
+<meta property="og:title" content="브라우저의 동작 과정과 Virtual Dom">
+<meta property="og:url" content="http://localhost:4000/react/virtual-dom/">
 
 
-  <meta property="og:description" content="상태관리 라이브러리는 여러가지가 있다. 각 라이브러리의 장단점을 알아보자.">
+  <meta property="og:description" content="브라우저의 동작원리를 알아보고 가상 Dom이 무엇을 하는지 알아보자.">
 
 
 
@@ -36,7 +36,7 @@
 
 
 
-  <meta property="article:published_time" content="2022-05-05T00:00:00+09:00">
+  <meta property="article:published_time" content="2022-05-23T00:00:00+09:00">
 
 
 
@@ -47,7 +47,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/react/redux-mobx-context/">
+<link rel="canonical" href="http://localhost:4000/react/virtual-dom/">
 
 
 
@@ -183,7 +183,7 @@
     
       
       
-        <li class="current">상태관리 라이브러리의 장단점 정리</li>
+        <li class="current">브라우저의 동작 과정과 Virtual Dom</li>
       
     
   </ol>
@@ -380,16 +380,16 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="상태관리 라이브러리의 장단점 정리">
-    <meta itemprop="description" content="상태관리 라이브러리는 여러가지가 있다. 각 라이브러리의 장단점을 알아보자.">
-    <meta itemprop="datePublished" content="2022-05-05T00:00:00+09:00">
+    <meta itemprop="headline" content="브라우저의 동작 과정과 Virtual Dom">
+    <meta itemprop="description" content="브라우저의 동작원리를 알아보고 가상 Dom이 무엇을 하는지 알아보자.">
+    <meta itemprop="datePublished" content="2022-05-23T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/react/redux-mobx-context/" class="u-url" itemprop="url">상태관리 라이브러리의 장단점 정리
+            <a href="http://localhost:4000/react/virtual-dom/" class="u-url" itemprop="url">브라우저의 동작 과정과 Virtual Dom
 </a>
           </h1>
           
@@ -400,7 +400,7 @@
       <span class="page__meta-date">
         <i class="far fa-calendar-alt" aria-hidden="true"></i>
         
-        <time datetime="2022-05-05T00:00:00+09:00">2022-05-05</time>
+        <time datetime="2022-05-23T00:00:00+09:00">2022-05-23</time>
       </span>
     
 
@@ -413,7 +413,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          2 분 소요
+          1 분 소요
         
       </span>
     
@@ -428,117 +428,65 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Contents</h4></header>
-              <ul class="toc__menu"><li><a href="#redux">Redux</a><ul><li><a href="#장점">장점</a><ul><li><a href="#1-상태-예측이-가능하다">1. 상태 예측이 가능하다.</a></li><li><a href="#2-유지-보수가-용이하다">2. 유지 보수가 용이하다.</a></li><li><a href="#3-디버깅이-쉽다">3. 디버깅이 쉽다.</a></li><li><a href="#4-한-곳에서-관리">4. 한 곳에서 관리</a></li></ul></li><li><a href="#단점">단점</a><ul><li><a href="#1-코드의-증량">1. 코드의 증량</a></li><li><a href="#2-읽기-전용">2. 읽기 전용</a></li><li><a href="#3-컴포넌트와의-연결성">3. 컴포넌트와의 연결성</a></li></ul></li></ul></li><li><a href="#mobx">Mobx</a><ul><li><a href="#장점-1">장점</a><ul><li><a href="#1-객체지향적">1. 객체지향적</a></li><li><a href="#2-데코레이터">2. 데코레이터</a></li><li><a href="#3-캡슐화">3. 캡슐화</a></li></ul></li><li><a href="#단점-1">단점</a><ul><li><a href="#1-디버깅이-불편하다">1. 디버깅이 불편하다</a></li><li><a href="#2-데코레이터-1">2. 데코레이터</a></li><li><a href="#3-레퍼런스">3. 레퍼런스</a></li></ul></li></ul></li><li><a href="#context-api">Context api</a><ul><li><a href="#장점-2">장점</a><ul><li><a href="#1-접근성">1. 접근성</a></li><li><a href="#2-러닝-커브">2. 러닝 커브</a></li><li><a href="#3-간결성">3. 간결성</a></li></ul></li><li><a href="#단점-2">단점</a><ul><li><a href="#rendering">rendering</a></li></ul></li></ul></li><li><a href="#recoil">Recoil</a><ul><li><a href="#장점-3">장점</a><ul><li><a href="#1-간단한-인터페이스로">1. 간단한 인터페이스로</a></li><li><a href="#2-증분-및-분산">2. 증분 및 분산</a></li><li><a href="#3-컴포넌트-비수정">3. 컴포넌트 비수정</a></li></ul></li><li><a href="#단점-3">단점</a><ul><li><a href="#1-호환성">1. 호환성</a></li><li><a href="#2-레퍼런스">2. 레퍼런스</a></li></ul></li><li><a href="#공통적인-단점">공통적인 단점</a></li></ul></li><li><a href="#맺음말">맺음말</a></li></ul>
+              <ul class="toc__menu"><li><a href="#browser의-동작-과정">Browser의 동작 과정</a><ul><li><a href="#렌더링-엔진">렌더링 엔진</a></li><li><a href="#렌더링-과정">렌더링 과정</a><ul><li><a href="#1-html-파싱-dom-트리-생성">1. HTML 파싱, DOM 트리 생성</a></li><li><a href="#2-css-파싱-렌더트리-생성">2. CSS 파싱, 렌더트리 생성</a></li><li><a href="#3-layoutreflow">3. Layout(reflow)</a></li><li><a href="#4-painting">4. Painting</a></li></ul></li></ul></li><li><a href="#vdomvirtual-dom">VDOM(Virtual DOM)</a><ul><li><a href="#vdom-이란">VDOM 이란?</a></li><li><a href="#vdom을-사용하는-이유">VDOM을 사용하는 이유</a></li></ul></li><li><a href="#요약">요약</a></li></ul>
 
             </nav>
           </aside>
         
-        <p>React로 개발을 하다보면 props를 많이 사용하게 된다. 하지만 이 과정에서 구조상 props가 너무 깊게 내려간다거나 같은 하나의 데이터를 여러 컴포넌트에서 공통적으로 사용해야 하는 경우가 발생한다. 이 경우 상태 관리를 이용하여 이를 해결할 수 있는데, 상황에 따라 혹은 선호도에 따라 선택할 수 있는 라이브러리가 많다. 이번 포스팅에서는 상태관리 툴에 약간의 장단점과 내 생각을 정리해 보려 한다. (본인은 context만 사용해 보았다.)</p>
+        <p>React는 여러 가지 특징을 가지고 있다. 오늘은 그 특징 중 하나인 VDOM(Virtual DOM)에 관해 포스팅하려 한다. VDOM을 알기 위해서는 브라우저의 동작 과정을 알아야 할 필요가 있기 때문에 이에 대해 간단하게 알아보고 VDOM으로 넘어가 보려 한다.</p>
+
+<h1 id="browser의-동작-과정">Browser의 동작 과정</h1>
 
 <p><br /></p>
 
-<h1 id="redux">Redux</h1>
-<p>상태관리를 위해 사용하는 JavaScript 라이브러리 이다. Flux 아키텍쳐를 따르며 단방향 데이터 흐름 모델을 통해 상태를 관리를하여 확장성을 늘려준다.</p>
-
-<h2 id="장점">장점</h2>
-<h3 id="1-상태-예측이-가능하다">1. 상태 예측이 가능하다.</h3>
-<p>동일한 상태와 액션이 리듀서에 전달되면 리듀서는 순수 함수이기 때문에 항상 동일한 결과가 생성된다. 또한 이전 상태 사이를 앞뒤로 이동하고 결과를 실시간으로 볼 수 있습니다.</p>
-
-<h3 id="2-유지-보수가-용이하다">2. 유지 보수가 용이하다.</h3>
-<p>코드를 구성하는 방법에 대해 엄격하므로 Redux에 대한 지식이 있는 사람이 Redux 애플리케이션의 구조를 더 쉽게 이해할 수 있다.</p>
-
-<h3 id="3-디버깅이-쉽다">3. 디버깅이 쉽다.</h3>
-<p>어떤 액선이 일어나고 데이터가 어떻게 변화했는지 로그가 남는다. 또한 개발자는 이전의 특정 상태로 돌아가볼 수 있다. 때문에 시간 여행이 가능해지며 버그가 나기 이전 상태로 돌아가서 테스트해볼 수 있다.</p>
-
-<h3 id="4-한-곳에서-관리">4. 한 곳에서 관리</h3>
-<p>store를 이용하여 상태를 한 곳에서 관리한다. 전역상태를 관리할 때 효율적이다.</p>
-
-<h2 id="단점">단점</h2>
-<h3 id="1-코드의-증량">1. 코드의 증량</h3>
-<p>리덕스로 코드를 구현하는 순간 필수적으로 만들어야하는 파일이 있다. 때문에 코드량이 그만큼 증가하게 된다.</p>
-
-<h3 id="2-읽기-전용">2. 읽기 전용</h3>
-<p>리덕스는 상태를 읽기 전용으로 취급하지만 읽기 전용으로 만들어주지는 않는다. 때문에 항상 직접 수정하지 않게 하기위해 주의해야 한다.</p>
-
-<h3 id="3-컴포넌트와의-연결성">3. 컴포넌트와의 연결성</h3>
-<p>store와 component를 연결하기 위해 mapStateToProps, mapDispatchToProps 와 같은 메서드가 필요하다. (코드량이 증가한다.)</p>
+<h2 id="렌더링-엔진">렌더링 엔진</h2>
+<p>요청 받은 내용을 브라우저 화면에 표시한다. 기본적으로 렌더링 엔진은 HTML 및 XML 문서와 이미지를 표시할 수 있다. 각 브라우저는 서로다른 렌더링 엔진을 사용한다.</p>
+<ul>
+  <li>Internet Explorer : Trident</li>
+  <li>Firefox : Gecko</li>
+  <li>Safari, Chrome : Webkit</li>
+</ul>
 
 <p><br /></p>
 
-<h1 id="mobx">Mobx</h1>
+<h2 id="렌더링-과정">렌더링 과정</h2>
 
-<blockquote>
-  <p>MobX는 functional reactive programming을 투명하게 적용함으로써 상태 관리를 쉽고 확장성 있게 만들어주는 검증된 라이브러리입니다. -Mobx-</p>
-</blockquote>
+<p><img src="/assets/images/2022-05-23/browserWorkflow.png" alt="" /></p>
 
-<h2 id="장점-1">장점</h2>
-<h3 id="1-객체지향적">1. 객체지향적</h3>
-<p>mobx는 객체지향적으로 class를 사용할 것을 권장한다.</p>
+<ul>
+  <li>파싱(parsing) : 코드를 브라우저가 이해할 수 있도록 변환하는 것</li>
+</ul>
 
-<h3 id="2-데코레이터">2. 데코레이터</h3>
-<p>데코레이터를 제공하기 때문에 좀더 깔끔하게 구성이 가능하다.</p>
+<h3 id="1-html-파싱-dom-트리-생성">1. HTML 파싱, DOM 트리 생성</h3>
+<p>브라우저가 서버에서 HTML 문서를 받으면 렌더링 엔진이 이를 파싱하고 Node로 이루어진 DOM 트리를 생성한다.</p>
 
-<h3 id="3-캡슐화">3. 캡슐화</h3>
-<p>state의 변경을 오직 메서드를 통해서만 변경할 수 있게 설정이 가능하다. (privite)</p>
+<h3 id="2-css-파싱-렌더트리-생성">2. CSS 파싱, 렌더트리 생성</h3>
+<p>CSS를 파싱하여 CSSOM(CSS Object Model)을 생성하고 해당 스타일 정보를 이용하여 렌더트리를 생성한다.</p>
 
-<h2 id="단점-1">단점</h2>
-<h3 id="1-디버깅이-불편하다">1. 디버깅이 불편하다</h3>
-<p>리덕스와 같은 툴이 마땅히 없기에 디버깅을 위해서 console.log를 이용해야 한다.</p>
+<h3 id="3-layoutreflow">3. Layout(reflow)</h3>
+<p>각 노드들에게 좌표를 전달하여 화면상 어디에 배치될 지 결정된다.</p>
 
-<h3 id="2-데코레이터-1">2. 데코레이터</h3>
-<p>개인적으로 데코레이터는 장점이자 단점같다. Class 형으로 컴포넌트를 구성했다면 데코레이터는 장점이 될 수 있지만 함수형으로 구성했다면 단점이라 생각한다. 함수형에서 데코레이터를 사용하기 위해서는 useContext hook을 이용해야하며 컴포넌트에 연결하기 위해 hoc로 랩핑해야 한다.</p>
-
-<h3 id="3-레퍼런스">3. 레퍼런스</h3>
-<p>레퍼런스 코드가 부족하다. 특히 함수형의 경우 정말 찾아보기 힘들다.</p>
+<h3 id="4-painting">4. Painting</h3>
+<p>각 노드를 거치면서 paint() 메소드를 호출한다.</p>
 
 <p><br /></p>
 
-<h1 id="context-api">Context api</h1>
-<h2 id="장점-2">장점</h2>
-<h3 id="1-접근성">1. 접근성</h3>
-<p>react에서 제공하는 기술이기에 추가 설치가 필요없다.</p>
-
-<h3 id="2-러닝-커브">2. 러닝 커브</h3>
-<p>Mobx와 Redux에 비해 러닝커브가 낮다.</p>
-
-<h3 id="3-간결성">3. 간결성</h3>
-<p>사용하기위한 코드 구성이 가장 간결하다.</p>
-
-<h2 id="단점-2">단점</h2>
-<h3 id="rendering">rendering</h3>
-<p>context의 provider는 value값이 변할 경우 해당 값을 사용하는 컴포넌트 또한 리렌더링이 된다. 만약 컨택스트를 상태값과 액션값으로 나누어 사용하면 이 문제는 해결이 가능하다. 하지만 그에따른 보일러 플레이트코드가 증가하며 복잡해질 수록 provider가 늘어나 지옥이 될 수 있다.</p>
+<h1 id="vdomvirtual-dom">VDOM(Virtual DOM)</h1>
 
 <p><br /></p>
 
-<h1 id="recoil">Recoil</h1>
-<p>fecebook에서 만든 상태관리 라이브러리이다. 기존 context의 렌더링 문제, 단일값만 저장 가능한 문제(consumer를 가지는 여러 값의 집합을 저장 못하는 문제), 코드 분활의 어려움을 해결하고자 만든 라이브러리이다.</p>
+<h2 id="vdom-이란">VDOM 이란?</h2>
+<p>VDOM은 가상의 DOM을 메모리에 저장하고 ReactDOM과 같은 라이브러리에 의해 실제 DOM과 동기화하는 프로그래밍 개념이다.</p>
 
-<h2 id="장점-3">장점</h2>
-<h3 id="1-간단한-인터페이스로">1. 간단한 인터페이스로</h3>
-<p>get/set으로 사용할 수 있도록 boilerplate-free API를 제공</p>
+<p>만약 화면을 구성하는 요소가 변화했을 때, 이를 바로 DOM에 동기화하는 것이 아니라 메모리에 저장돼 있는 VDOM에 먼저 적용을 시킨다. 그 후 실제 DOM과 비교해 변화한 부분을 확은 하고 해당 부분만 렌더링을 시켜 DOM에 적용시키는 것이다.</p>
 
-<h3 id="2-증분-및-분산">2. 증분 및 분산</h3>
-<p>코드 분할이 가능해진다.</p>
+<h2 id="vdom을-사용하는-이유">VDOM을 사용하는 이유</h2>
+<p>VDOM을 사용하는 이유로는 렌더링 최적화에 있다. 근래에는 MPA(Multi Page Application)보다 SPA(Single Page Application)로 많이 개발을 한다. SPA는 필요 리소스를 한번에 다운로드 받은 후 새로운 페이지를 요청 할 시 변경되는 부분만 렌더링하는 특징이 있다. 이러한 과정에서 필연적으로 DOM조작이 많이 이루어 지게 된다. VDOM은 이러한 과정을 먼저 처리하고 최종적인 결과를 DOM에 전달함으로서 연산양을 줄여주고 성능을 개선시켜 준다.</p>
 
-<h3 id="3-컴포넌트-비수정">3. 컴포넌트 비수정</h3>
-<p>컴포넌트를 수정하지 않고 상태 데이터로 대체 가능하며 파생된 데이터를 사용시 동기식과 비동기식 간에 이동이 가능하다.</p>
+<p>즉, VDOM은 여러번 해야하는 DOM 작업을 내부적으로 연산하여 딱 1번만 하게 해주는 것이다.</p>
 
-<h2 id="단점-3">단점</h2>
-<h3 id="1-호환성">1. 호환성</h3>
-<blockquote>
-  <p>Recoil 빌드는 ES5로 트랜스파일 되지 않으므로, Recoil을 ES5와 사용하는 것은 지원하지 않는다. -Recoil-</p>
-</blockquote>
-
-<p>ES5에서도 사용할 수 있는 방법은 있으니 버그가 발생할 수 있다 명시되어 있다.</p>
-
-<h3 id="2-레퍼런스">2. 레퍼런스</h3>
-<p>나온지 얼마 안된만큼 레퍼런스가 부족하다.</p>
-
-<h2 id="공통적인-단점">공통적인 단점</h2>
-<p>컴포넌트의 재사용성을 해칠 수 있다.</p>
-
-<h1 id="맺음말">맺음말</h1>
-<p>이상으로 각 상태관리 라이브러리에 대하여 간략히 알아보았다. 사실 사용해본 기능이 context뿐인 만큼 각자의 개념만 살짝 맛봤을 뿐 어떤것이 더 좋은지 경험에서 판단하기는 불가능 한것같다. 하지만 개인적으로 규모가 작거나 전역관리 하나만 필요할떄는 context만으로도 충분할 것 같으며 recoil의 등장으로 조금씩 선호도가 변할 수도 있을 것 같다는 생각이 들었다. 또한 전역관리는 중요하지만 남발할 경우 재사용성을 해할 수 있다는 공통적인 단점이 있기에 항상 사용에 주의해야 할 것같다.</p>
+<h1 id="요약">요약</h1>
+<p>VDOM은 SPA로 넘어가는 과정에서 여러번 발생되는 DOM 작업을 메모리에 저장된 가상 DOM에서 연산을 미리 함으로서 DOM조작을 한번만 하게 도와준다.</p>
 
         
       </section>
@@ -555,15 +503,13 @@
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
     <span itemprop="keywords">
     
-      <a href="/tags/#context" class="page__taxonomy-item p-category" rel="tag">context</a><span class="sep">, </span>
+      <a href="/tags/#browser-workflow" class="page__taxonomy-item p-category" rel="tag">Browser-Workflow</a><span class="sep">, </span>
     
-      <a href="/tags/#mobx" class="page__taxonomy-item p-category" rel="tag">mobx</a><span class="sep">, </span>
+      <a href="/tags/#react" class="page__taxonomy-item p-category" rel="tag">React</a><span class="sep">, </span>
     
-      <a href="/tags/#react" class="page__taxonomy-item p-category" rel="tag">react</a><span class="sep">, </span>
+      <a href="/tags/#vdom" class="page__taxonomy-item p-category" rel="tag">VDOM</a><span class="sep">, </span>
     
-      <a href="/tags/#recoil" class="page__taxonomy-item p-category" rel="tag">recoil</a><span class="sep">, </span>
-    
-      <a href="/tags/#redux" class="page__taxonomy-item p-category" rel="tag">redux</a>
+      <a href="/tags/#virtual-dom" class="page__taxonomy-item p-category" rel="tag">Virtual DOM</a>
     
     </span>
   </p>
@@ -588,7 +534,7 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-05-05T00:00:00+09:00">2022-05-05</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-05-23T00:00:00+09:00">2022-05-23</time></p>
 
       </footer>
 
@@ -597,23 +543,22 @@
     <h4 class="page__share-title">공유하기</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%EC%83%81%ED%83%9C%EA%B4%80%EB%A6%AC+%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%EC%9D%98+%EC%9E%A5%EB%8B%A8%EC%A0%90+%EC%A0%95%EB%A6%AC%20http%3A%2F%2Flocalhost%3A4000%2Freact%2Fredux-mobx-context%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EC%9D%98+%EB%8F%99%EC%9E%91+%EA%B3%BC%EC%A0%95%EA%B3%BC+Virtual+Dom%20http%3A%2F%2Flocalhost%3A4000%2Freact%2Fvirtual-dom%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Freact%2Fredux-mobx-context%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Freact%2Fvirtual-dom%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Freact%2Fredux-mobx-context%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Freact%2Fvirtual-dom%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/react/class-and-function/" class="pagination--pager" title="Class와 Function
+      <a href="/javascript/var-hosting-TDZ/" class="pagination--pager" title="var로 알아보는 Hoisting, TDZ
 ">이전</a>
     
     
-      <a href="/react-native/react-native-intallation/" class="pagination--pager" title="React-Native installation
-">다음</a>
+      <a href="#" class="pagination--pager disabled">다음</a>
     
   </nav>
 
@@ -627,57 +572,6 @@
     <div class="page__related">
       <h2 class="page__related-title">참고</h2>
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-      <div class="archive__item-teaser">
-        <img src="/assets/thumbnail/react.png" alt="">
-      </div>
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/react/virtual-dom/" rel="permalink">브라우저의 동작 과정과 Virtual Dom
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2022-05-23T00:00:00+09:00">2022-05-23</time>
-      </span>
-    
-
-    <span class="page__meta-sep"></span>
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
-        
-          1 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">브라우저의 동작원리를 알아보고 가상 Dom이 무엇을 하는지 알아보자.
-</p>
-  </article>
-</div>
-
         
           
 
@@ -717,7 +611,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-fw fa-clock" aria-hidden="true"></i>
         
-          4 분 소요
+          5 분 소요
         
       </span>
     
@@ -827,6 +721,57 @@
 
 
     <p class="archive__item-excerpt" itemprop="description">React-Native cli를 설치하고 android studio, Xcode와 연동해보자.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <img src="/assets/thumbnail/react.png" alt="">
+      </div>
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/react/redux-mobx-context/" rel="permalink">상태관리 라이브러리의 장단점 정리
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-05T00:00:00+09:00">2022-05-05</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">상태관리 라이브러리는 여러가지가 있다. 각 라이브러리의 장단점을 알아보자.
 </p>
   </article>
 </div>

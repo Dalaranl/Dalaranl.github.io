@@ -13,19 +13,19 @@ docs:
   - title: "Dev"
     children:
       - title: "HTML"
-        url: /categories/html/
+        url: /categories/html
         category: "html"
       - title: "JavaScript"
-        url: /categories/javascript/
+        url: /categories/javascript
         category: "javascript"
       - title: "css"
-        url: /categories/css/
+        url: /categories/css
         category: "css"
       - title: "react"
-        url: /categories/react/
+        url: /categories/react
         category: "react"
       - title: "react-native"
-        url: /categories/react-native/
+        url: /categories/react-native
         category: "react-native"
   - title: "Algorithm"
     children:

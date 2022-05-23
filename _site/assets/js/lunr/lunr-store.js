@@ -45,5 +45,11 @@ var store = [{
         "excerpt":"Var var는 변수(var, let, const)들 중 하나로 초기 자바스크립트에서 많이 사용되던 변수이다. 요즘에는 거의 사용하지 않지만 과거의 프로젝트일 경우 충분히 만날 수 있으며, let과 const와는 다른 특성이 있기 때문에 var를 let, const로 변환하는 과정에서 예상치 못한 오류를 만날 수 있다. 블록 스코프 var는 블록 스코프가 없다. 때문에 var로 선언한 변수의...","categories": ["javascript"],
         "tags": ["JavaScript","var","hoisting","TDZ"],
         "url": "/javascript/var-hosting-TDZ/",
-        "teaser": "/assets/thumbnail/javascript.png"
+        "teaser": ""
+      },{
+        "title": "브라우저의 동작 과정과 Virtual Dom",
+        "excerpt":"React는 여러 가지 특징을 가지고 있다. 오늘은 그 특징 중 하나인 VDOM(Virtual DOM)에 관해 포스팅하려 한다. VDOM을 알기 위해서는 브라우저의 동작 과정을 알아야 할 필요가 있기 때문에 이에 대해 간단하게 알아보고 VDOM으로 넘어가 보려 한다. Browser의 동작 과정 렌더링 엔진 요청 받은 내용을 브라우저 화면에 표시한다. 기본적으로 렌더링 엔진은 HTML...","categories": ["react"],
+        "tags": ["React","Browser-Workflow","Virtual DOM","VDOM"],
+        "url": "/react/virtual-dom/",
+        "teaser": "/assets/thumbnail/react.png"
       }]
