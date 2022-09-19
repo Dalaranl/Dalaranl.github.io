@@ -30,7 +30,7 @@
 
 
 
-  <meta property="og:image" content="http://localhost:4000/assets/thumbnail/react.png">
+  <meta property="og:image" content="http://localhost:4000/assets/images/2022-05-23/browserWorkflow.png">
 
 
 
@@ -300,7 +300,7 @@
       
       
       <li>
-        <a href="">📂&nbsp;<span style="font-family:'Cafe24Oneprettynight'"">전체 글 수</style> <span style="font-family:'Coming Soon';">9</style> <span style="font-family:'Cafe24Oneprettynight';">개</style></a> 
+        <a href="">📂&nbsp;<span style="font-family:'Cafe24Oneprettynight'"">전체 글 수</style> <span style="font-family:'Coming Soon';">10</style> <span style="font-family:'Cafe24Oneprettynight';">개</style></a> 
       </li>
 
       <!--
@@ -478,15 +478,20 @@
 <h2 id="vdom-이란">VDOM 이란?</h2>
 <p>VDOM은 가상의 DOM을 메모리에 저장하고 ReactDOM과 같은 라이브러리에 의해 실제 DOM과 동기화하는 프로그래밍 개념이다.</p>
 
-<p>만약 화면을 구성하는 요소가 변화했을 때, 이를 바로 DOM에 동기화하는 것이 아니라 메모리에 저장돼 있는 VDOM에 먼저 적용을 시킨다. 그 후 실제 DOM과 비교해 변화한 부분을 확은 하고 해당 부분만 렌더링을 시켜 DOM에 적용시키는 것이다.</p>
+<p>만약 화면을 구성하는 요소가 변화했을 때, 이를 바로 DOM에 동기화하는 것이 아니라 메모리에 저장된 VDOM에 먼저 적용을 시킨다. 그 후 실제 DOM과 비교해 변화한 부분을 확인 하고 해당 부분만 렌더링시켜 DOM에 적용시키는 것이다.</p>
 
 <h2 id="vdom을-사용하는-이유">VDOM을 사용하는 이유</h2>
-<p>VDOM을 사용하는 이유로는 렌더링 최적화에 있다. 근래에는 MPA(Multi Page Application)보다 SPA(Single Page Application)로 많이 개발을 한다. SPA는 필요 리소스를 한번에 다운로드 받은 후 새로운 페이지를 요청 할 시 변경되는 부분만 렌더링하는 특징이 있다. 이러한 과정에서 필연적으로 DOM조작이 많이 이루어 지게 된다. VDOM은 이러한 과정을 먼저 처리하고 최종적인 결과를 DOM에 전달함으로서 연산양을 줄여주고 성능을 개선시켜 준다.</p>
+<p>VDOM을 사용하는 이유로는 렌더링 최적화에 있다. 근래에는 MPA(Multi Page Application)보다 SPA(Single Page Application)로 많이 개발한다. SPA는 필요 리소스를 한 번에 다운로드 받은 후 새로운 페이지를 요청 할 시 변경되는 부분만 렌더링하는 특징이 있다. 이러한 과정에서 필연적으로 DOM조작이 많이 이루어 지게 된다. VDOM은 이러한 과정을 먼저 처리하고 최종적인 결과를 DOM에 전달함으로써 연산량을 줄여주고 성능을 개선해 준다.</p>
 
-<p>즉, VDOM은 여러번 해야하는 DOM 작업을 내부적으로 연산하여 딱 1번만 하게 해주는 것이다.</p>
+<p>즉, VDOM은 여러 번 해야하는 DOM 작업을 내부적으로 연산하여 딱 1번만 하게 해주는 것이다.</p>
 
 <h1 id="요약">요약</h1>
-<p>VDOM은 SPA로 넘어가는 과정에서 여러번 발생되는 DOM 작업을 메모리에 저장된 가상 DOM에서 연산을 미리 함으로서 DOM조작을 한번만 하게 도와준다.</p>
+<p>VDOM은 SPA로 넘어가는 과정에서 여러 번 발생되는 DOM 작업을 메모리에 저장된 가상 DOM에서 연산을 미리 함으로서 DOM조작을 한번만 하게 도와준다.</p>
+
+<p>참고:
+https://velopert.com/3236
+https://woong-jae.com/web/210821-how-does-browser-work
+https://jongminfire.dev/spa-single-page-application-%EB%9E%80</p>
 
         
       </section>
@@ -558,7 +563,8 @@
 ">이전</a>
     
     
-      <a href="#" class="pagination--pager disabled">다음</a>
+      <a href="/error/env-error/" class="pagination--pager" title="Next.js .env undefined error (with Firebase) 기록
+">다음</a>
     
   </nav>
 
@@ -572,6 +578,57 @@
     <div class="page__related">
       <h2 class="page__related-title">참고</h2>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <img src="" alt="">
+      </div>
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/error/env-error/" rel="permalink">Next.js .env undefined error (with Firebase) 기록
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-09-19T00:00:00+09:00">2022-09-19</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Next.js에서 환경변수를 설정했지만 값이 undefined로 읽어지지 않았다. 이에대한 해결법을 기록한다.
+</p>
+  </article>
+</div>
+
         
           
 
@@ -721,57 +778,6 @@
 
 
     <p class="archive__item-excerpt" itemprop="description">React-Native cli를 설치하고 android studio, Xcode와 연동해보자.
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-      <div class="archive__item-teaser">
-        <img src="/assets/thumbnail/react.png" alt="">
-      </div>
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/react/redux-mobx-context/" rel="permalink">상태관리 라이브러리의 장단점 정리
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2022-05-05T00:00:00+09:00">2022-05-05</time>
-      </span>
-    
-
-    <span class="page__meta-sep"></span>
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
-        
-          2 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">상태관리 라이브러리는 여러가지가 있다. 각 라이브러리의 장단점을 알아보자.
 </p>
   </article>
 </div>

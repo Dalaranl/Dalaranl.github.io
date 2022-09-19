@@ -51,5 +51,11 @@ var store = [{
         "excerpt":"React는 여러 가지 특징을 가지고 있다. 오늘은 그 특징 중 하나인 VDOM(Virtual DOM)에 관해 포스팅하려 한다. VDOM을 알기 위해서는 브라우저의 동작 과정을 알아야 할 필요가 있기 때문에 이에 대해 간단하게 알아보고 VDOM으로 넘어가 보려 한다. Browser의 동작 과정 렌더링 엔진 요청 받은 내용을 브라우저 화면에 표시한다. 기본적으로 렌더링 엔진은 HTML...","categories": ["react"],
         "tags": ["React","Browser-Workflow","Virtual DOM","VDOM"],
         "url": "/react/virtual-dom/",
-        "teaser": "/assets/thumbnail/react.png"
+        "teaser": "/assets/images/2022-05-23/browserWorkflow.png"
+      },{
+        "title": "Next.js .env undefined error (with Firebase) 기록",
+        "excerpt":"최근 개인 프로젝트로 진행했던 프로젝트에서 Firebase와 openApi와 관련된 에러가 발생했다. 기존에 구동을 확인했던 코드에 문제가 생긴 것이었다. 결론부터 말하자면 이는 env와 관련된 에러였다. 때문에 발생한 문제와 해결방법을 순차적으로 기록한 후 결론을 정리하려한다. 1. env의 부재 문제가 발생한 부분은 Giphy openApi와 사용자의 클립 기록을 firebase를 통해 기록하는 부분이었다. 발생 원인은 api와...","categories": ["error"],
+        "tags": ["환경변수","env","undefined"],
+        "url": "/error/env-error/",
+        "teaser": ""
       }]
